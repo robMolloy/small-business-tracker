@@ -1,3 +1,3 @@
-# photobooth
+# small-business-tracker
 
-A photobooth to work with the raspberry pi
+small-business-tracker
