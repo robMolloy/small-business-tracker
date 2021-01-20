@@ -24,7 +24,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <div className="App">
           <NavBars
-            menuButton={false}
+            menuButton={true}
             color={headerColor}
             headerChildren={<HeaderBarContents color={headerColor} />}
           />

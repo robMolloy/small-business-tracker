@@ -26,7 +26,7 @@ const HeaderBarContents = (props = {}) => {
   return (
     <>
       <div className={classes.logoContainer}>
-        <Title color="mono">Photobooth</Title>
+        <Title color="mono">small-business-tracker</Title>
       </div>
 
       <div className={classes.spacer}></div>
