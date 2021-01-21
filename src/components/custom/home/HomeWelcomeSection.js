@@ -40,10 +40,11 @@ const HomeWelcomeSection = (props = {}) => {
       <span className={classes.column}>
         <span></span>
         <span className={classes.container}>
-          <Text align="right">Hi I'm</Text>
-          <Title size={0}>Rob Molloy</Title>
-          <Text>romolo.co.uk</Text>
+          <Text align="center">Welcome to</Text>
+          <Title size={0}>Small Business Tracker</Title>
+          {/* <Text>romolo.co.uk</Text> */}
         </span>
+        <span></span>
         <span></span>
       </span>
     </Section>
