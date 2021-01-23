@@ -1,4 +1,4 @@
-class createFormHelper {
+class formHelper {
   constructor({ formControls, values }) {
     this.formControls = formControls;
     this.values = values;
@@ -20,5 +20,7 @@ class createFormHelper {
   //   return !form.isErrors();
   // }
 }
+
+const createFormHelper = (props) => new formHelper(props);
 
 export default createFormHelper;
