@@ -4,6 +4,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { makeStyles } from "@material-ui/core/styles";
+import Option from "./Option";
 
 import { v4 as uuid } from "uuid";
 
@@ -11,25 +12,26 @@ const useStyles = makeStyles((theme) => {
   return {
     formControl: { width: "100%" },
     label: {
-      backgroundColor: "#FFFFFF",
-      padding: "2px 5px",
-      marginLeft: "-4px",
+      // backgroundColor: theme.palette.,
+      // padding: "2px 5px",
+      // marginLeft: "-4px",
     },
     helperText: { color: theme.palette.error.main },
   };
 });
 
 const Select = forwardRef((props, ref) => {
-  let id, variant, option1, children, name, label, helperText;
+  let id, variant, option1, children, name, label, helperText, error;
 
   ({
     id = uuid(),
-    variant = "outlined",
-    option1 = <option value={""}>Select...</option>,
+    variant = "filled",
+    option1 = <Option disabled value={""}></Option>,
     children,
     name,
     label,
     helperText,
+    error,
     ...props
   } = props);
 
@@ -37,10 +39,13 @@ const Select = forwardRef((props, ref) => {
 
   return (
     <FormControl className={classes.formControl} variant={variant}>
-      <InputLabel htmlFor={id} className={classes.label}>
+      <InputLabel
+        htmlFor={id}
+        className={`${classes.label} ${error ? "Mui-error" : ""}`}
+      >
         {label}
       </InputLabel>
-      <MUISelect native ref={ref} inputProps={{ name, id }} {...props}>
+      <MUISelect native inputProps={{ name, id }} {...{ ...props, ref, error }}>
         {option1}
         {children}
       </MUISelect>

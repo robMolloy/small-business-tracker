@@ -1,27 +1,66 @@
 import React from "react";
 
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import GridItem from "../grids/GridItem";
+import DeleteIcon from "../icons/DeleteIcon";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+  icon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+}));
 
 const MultiForm = (props = {}) => {
-  let listValues, Component, schema, width, listFormControls;
-  ({
-    listValues = {},
+  let setMultiFormValues,
+    multiFormValues,
     Component,
-    schema = yup.object().shape({}),
+    width,
+    remove,
+    multiFormControls;
+
+  ({
+    multiFormValues,
+    setMultiFormValues,
+    multiFormControls = {},
+    Component,
     width = 12,
-    listFormControls = {},
+    remove = false,
   } = props);
 
-  const resolver = yupResolver(schema);
-  const formControls = useForm({ resolver, mode: "onChange" });
+  if (remove) width -= 1;
 
-  return Object.entries(listValues).map(([id, values]) => {
-    listFormControls[id] = { ...formControls };
+  const removeItem = (id) => {
+    delete multiFormValues[id];
+    setMultiFormValues({ ...multiFormValues });
+  };
 
-    return <Component {...{ values, formControls, width }} />;
-  });
+  const classes = useStyles();
+
+  return (
+    <>
+      {Object.entries(multiFormValues).map(([id, values]) => {
+        multiFormControls[id] = {};
+        let formControls = multiFormControls[id];
+
+        return (
+          <React.Fragment key={id}>
+            <Component {...{ values, formControls, width }} />
+            {remove && (
+              <GridItem
+                xs={1}
+                onClick={() => removeItem(id)}
+                className={classes.icon}
+              >
+                <DeleteIcon />
+              </GridItem>
+            )}
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
 };
 
 export default MultiForm;

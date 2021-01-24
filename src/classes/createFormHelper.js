@@ -15,6 +15,11 @@ class formHelper {
     };
   }
 
+  setValue(name, value, params = { shouldValidate: true }) {
+    this.values[name] = value;
+    this.formControls.setValue(name, value, params);
+  }
+
   // async isValid() {
   //   await form.trigger();
   //   return !form.isErrors();

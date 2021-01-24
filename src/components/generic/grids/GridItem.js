@@ -13,12 +13,16 @@ const useStyles = makeStyles((theme) => {
 const GridItem = (props = {}) => {
   // console.log(props);
 
-  let children, className;
-  ({ children, className = "", ...props } = props);
+  let children, className, xs;
+  ({ children, className = "", xs = 12, ...props } = props);
   const classes = useStyles();
 
   return (
-    <MUIGrid item className={`${className} ${classes.root}`} {...props}>
+    <MUIGrid
+      item
+      className={`${className} ${classes.root}`}
+      {...{ ...props, xs }}
+    >
       {children}
     </MUIGrid>
   );

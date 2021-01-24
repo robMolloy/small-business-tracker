@@ -4,7 +4,9 @@ import MUIButton from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => {
   return {
-    root: { color: "#FFFFFF" },
+    root: {
+      // color: "#FFFFFF"
+    },
   };
 });
 

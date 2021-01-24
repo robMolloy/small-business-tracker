@@ -9,7 +9,7 @@ const Section = (props = {}) => {
   ({
     children,
     className = "",
-    withContainer = false,
+    withContainer = true,
     color = "mono",
     ...props
   } = props);

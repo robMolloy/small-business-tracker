@@ -4,7 +4,7 @@ import GridItem from "./GridItem";
 
 const GridInput = forwardRef((props, ref) => {
   let grid;
-  ({ grid, ...props } = props);
+  ({ grid = { xs: 12 }, ...props } = props);
 
   return (
     <GridItem {...grid}>
