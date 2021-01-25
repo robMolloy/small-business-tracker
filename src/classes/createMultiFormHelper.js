@@ -65,6 +65,22 @@ class multiFormHelper {
 
     if (rerender) this.rerender();
   }
+
+  matches(key) {
+    const itemsArray = Object.values(this.getValues());
+    const itemsOnKey = {};
+    let allMatches = [];
+
+    itemsArray.forEach((item) => (itemsOnKey[item[key]] = []));
+    itemsArray.forEach((item) => itemsOnKey[item[key]].push(item.id));
+
+    Object.values(itemsOnKey).forEach((matchingIds) => {
+      if (matchingIds.length !== 1)
+        allMatches = [...allMatches, ...matchingIds];
+    });
+
+    return allMatches;
+  }
 }
 
 const createMultiFormHelper = (props) => new multiFormHelper(props);

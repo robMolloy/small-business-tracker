@@ -4,12 +4,12 @@ import GridSelect from "../../generic/grids/GridSelect";
 import Option from "../../generic/fields/Option";
 
 import createFormHelper from "../../../classes/createFormHelper";
-import Schema from "../../../schemas/CustomerSchema";
+import Schema from "../../../schemas/PrjCusLinkSchema";
 
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
-const CustomerSelectFormContents = (props = {}) => {
+const PrjCusLinkCustomerSelectFormContents = (props = {}) => {
   let formControls, values, width, schema;
   ({ formControls = {}, values = {}, width = 12, schema = Schema } = props);
 
@@ -37,11 +37,11 @@ const CustomerSelectFormContents = (props = {}) => {
       grid={{ xs: width }}
       autoFocus
       label="Customer"
-      {...formHelper.fieldProps("cus_id")}
+      {...formHelper.fieldProps("pcl_cus_id")}
     >
       {customerOptions}
     </GridSelect>
   );
 };
 
-export default CustomerSelectFormContents;
+export default PrjCusLinkCustomerSelectFormContents;

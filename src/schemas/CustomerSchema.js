@@ -1,7 +1,6 @@
 import * as yup from "yup";
 
 const CustomerSchema = yup.object().shape({
-  id: yup.string().required(),
   cus_first_name: yup
     .string()
     .matches(/^([^0-9]*)$/, "First name should not contain numbers")

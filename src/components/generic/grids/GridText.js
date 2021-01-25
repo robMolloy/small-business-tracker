@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import Text from "../text/Text";
 import GridItem from "./GridItem";
 
