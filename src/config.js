@@ -2,6 +2,7 @@ import Home from "./components/pages/Home";
 
 import Customers from "./components/pages/Customers";
 import Projects from "./components/pages/Projects";
+import Records from "./components/pages/Records";
 
 import ContactFormContents from "./components/custom/form-contents/ContactFormContents";
 import PrjCusLinkFormContents from "./components/custom/form-contents/PrjCusLinkFormContents";
@@ -32,6 +33,13 @@ const config = {
       path: "projects",
       name: "Projects",
       Component: Projects,
+      Icon: HomeIcon,
+    },
+    {
+      order: "1",
+      path: "records",
+      name: "Records",
+      Component: Records,
       Icon: HomeIcon,
     },
     {

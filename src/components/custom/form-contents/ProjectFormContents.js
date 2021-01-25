@@ -6,9 +6,9 @@ import createFormHelper from "../../../classes/createFormHelper";
 
 import config from "../../../config";
 import Schema from "../../../schemas/ProjectSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import l_ from "lodash";
 
 const ProjectFormContents = (props = {}) => {

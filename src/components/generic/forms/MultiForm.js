@@ -1,6 +1,7 @@
 import React from "react";
 
 import GridItem from "../grids/GridItem";
+import GridText from "../grids/GridText";
 import DeleteIcon from "../icons/DeleteIcon";
 import { makeStyles } from "@material-ui/core";
 
@@ -18,7 +19,8 @@ const MultiForm = (props = {}) => {
     Component,
     width,
     remove,
-    multiFormControls;
+    multiFormControls,
+    overline;
 
   ({
     multiFormValues,
@@ -27,6 +29,7 @@ const MultiForm = (props = {}) => {
     Component,
     width = 12,
     remove = false,
+    overline = true,
   } = props);
 
   if (remove) width -= 1;
@@ -46,6 +49,7 @@ const MultiForm = (props = {}) => {
 
         return (
           <React.Fragment key={id}>
+            {overline && <GridText underline></GridText>}
             <Component {...{ values, formControls, width }} />
             {remove && (
               <GridItem

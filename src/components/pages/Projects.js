@@ -27,7 +27,7 @@ const Projects = (props = {}) => {
   const [
     prjCusLinkMultiFormValues,
     setPrjCusLinkMultiFormValues,
-  ] = React.useState(blankItems.prjCusLink());
+  ] = React.useState(blankItems.recItem());
 
   let projectMultiFormHelper = createMultiFormHelper({
     controls: projectMultiFormControls,
@@ -40,7 +40,7 @@ const Projects = (props = {}) => {
     controls: prjCusLinkMultiFormControls,
     values: prjCusLinkMultiFormValues,
     setValues: setPrjCusLinkMultiFormValues,
-    newItem: blankItems.prjCusLink,
+    newItem: blankItems.recItem,
   });
 
   let [matches, setMatches] = React.useState([]);

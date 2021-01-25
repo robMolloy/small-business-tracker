@@ -3,33 +3,28 @@ import { TextField } from "@material-ui/core/";
 import makeStyles from "@material-ui/styles/makeStyles";
 
 const Input = React.forwardRef((props = {}, ref) => {
-  let helperText, color;
-  ({ helperText = "", color = "mono", ...props } = props);
+  let helperText, InputLabelProps;
+  // color,
+  ({ helperText = "", InputLabelProps = {}, ...props } = props);
+  let color = "mono";
 
   const classes = makeStyles((theme) => ({
-    poot: {
-      //   backgroundColor: `${theme.palette[color].main}`,
-    },
-    input: {
-      //   backgroundColor: `${theme.palette[color].main}`,
-      color: theme.palette[color].contrastText,
-      //   "&:focus": { backgroundColor: `${theme.palette[color].main}` },
-    },
-    label: {
-      // zIndex: "1",
-      color: theme.palette[color].contrastText,
-    },
+    root: {},
+    input: {},
+    label: {},
+    notUsed: { color: theme.palette[color].contrastText },
   }))();
+  InputLabelProps.className = classes.label;
 
   return (
     <TextField
       color="primary"
-      className={classes.poot}
+      className={classes.root}
       fullWidth
       size="medium"
       inputRef={ref}
       inputProps={{ className: classes.input }}
-      InputLabelProps={{ className: classes.label }}
+      InputLabelProps={InputLabelProps}
       variant="filled"
       helperText={helperText}
       {...props}

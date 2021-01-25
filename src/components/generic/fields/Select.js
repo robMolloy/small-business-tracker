@@ -49,9 +49,11 @@ const Select = forwardRef((props, ref) => {
         {option1}
         {children}
       </MUISelect>
-      <FormHelperText className={classes.helperText}>
-        {helperText}
-      </FormHelperText>
+      {!!helperText && (
+        <FormHelperText className={classes.helperText}>
+          {helperText}
+        </FormHelperText>
+      )}
     </FormControl>
   );
 });

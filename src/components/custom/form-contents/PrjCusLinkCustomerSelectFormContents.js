@@ -26,11 +26,6 @@ const PrjCusLinkCustomerSelectFormContents = (props = {}) => {
       {`customer ${id}`}
     </Option>
   ));
-  // const customerOptions = Object.entries(customers).map(([id, customer]) => (
-  //   <Option key={id} value={id}>
-  //     {`${customer.cus_first_name} ${customer.cus_last_name}`}
-  //   </Option>
-  // ));
 
   return (
     <GridSelect

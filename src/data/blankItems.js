@@ -13,7 +13,7 @@ const getBlankItems = (blankRow, n = 1, values = {}) => {
 const blankItems = {
   contact: (n = 1, values = {}) => getBlankItems(rows.contact, n, values),
   customer: (n = 1, values = {}) => getBlankItems(rows.customer, n, values),
-  prjCusLink: (n = 1, values = {}) => getBlankItems(rows.prjCusLink, n, values),
+  recItem: (n = 1, values = {}) => getBlankItems(rows.prjCusLink, n, values),
   project: (n = 1, values = {}) => getBlankItems(rows.project, n, values),
   recItem: (n = 1, values = {}) => getBlankItems(rows.recItem, n, values),
   record: (n = 1, values = {}) => getBlankItems(rows.record, n, values),
