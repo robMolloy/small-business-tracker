@@ -13,6 +13,7 @@ import RecordFormContents from "./components/custom/form-contents/RecordFormCont
 import HomeIcon from "@material-ui/icons/Home";
 
 const config = {
+  project: { acronym: "sbt" },
   pages: [
     {
       order: "0",
@@ -92,6 +93,7 @@ const config = {
       mono: "#535b5f",
     },
   ],
+  fields: { variant: "outlined", size: "medium", color: "primary" },
   timeUnits: ["second", "minute", "hour", "day", "month"],
   contactTypes: ["phone", "email"],
   contactMethods: {
@@ -101,21 +103,3 @@ const config = {
 };
 
 export default config;
-
-/*
-
-primary: { main: "#FBAA60" },
-    secondary: { main: "#535b5f" },
-  },
-});
-
-const { primary: tertiary, secondary: mono } = themeCreator.palette;
-
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: "#F67B50" },
-    secondary: { main: "#FBC490" },
-    tertiary,
-    mono,
-
-*/

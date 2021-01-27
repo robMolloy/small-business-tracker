@@ -10,8 +10,9 @@ class formHelper {
       error: !!this.formControls.errors[name],
       helperText: this.formControls.errors?.[name]?.message,
       onChange: (e) => (this.values[name] = e.target.value),
-      // defaultValue:this.values[name],
+      defaultValue: this.values[name],
       name,
+      // autoComplete: "off",
     };
   }
 
