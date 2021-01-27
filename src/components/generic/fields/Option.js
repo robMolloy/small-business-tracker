@@ -1,12 +1,24 @@
 import React from "react";
-// import MenuItem from "@material-ui/core/MenuItem";
+import useTheme from "@material-ui/styles/useTheme";
 
 const Option = (props) => {
-  let value, children;
-  ({ value, children, ...props } = props);
+  let value, children, disabled;
+  ({ value, children, disabled, ...props } = props);
 
-  // return <option {...{ value, ...props }}>{children}</option>;
-  return <option {...{ value, ...props }}>{children}</option>;
+  const theme = useTheme();
+  let style = {};
+
+  if (disabled) {
+    const { light, main } = theme.palette.grey;
+    style = { background: light, color: main };
+  }
+
+  return (
+    <option {...{ value, disabled, ...props }} style={style}>
+      {children}
+    </option>
+  );
+  // return <MenuItem {...{ value, ...props }}>{children}</MenuItem>;
 };
 
 export default Option;
