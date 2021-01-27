@@ -22,13 +22,13 @@ const CustomerFormContents = (props = {}) => {
     <>
       <GridInput
         autoFocus
-        grid={{ xs: 12 }}
+        grid={{ xs: 12, sm: 6 }}
         label="First Name"
         {...formHelper.fieldProps("cus_first_name")}
       />
 
       <GridInput
-        grid={{ xs: 12 }}
+        grid={{ xs: 12, sm: 6 }}
         label="Last Name"
         {...formHelper.fieldProps("cus_last_name")}
       />
