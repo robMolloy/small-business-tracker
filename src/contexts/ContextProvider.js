@@ -15,7 +15,7 @@ const ContextProvider = (props) => {
   const [items, dispatch] = React.useReducer(Reducer, initStorage());
 
   React.useEffect(() => mightyStorage.setItem(storageLocation, items), [
-    setStorage,
+    storageLocation,
     items,
   ]);
 
