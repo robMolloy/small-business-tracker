@@ -27,6 +27,7 @@ const themeGenerator = (props = {}) => {
   const grey = theme.palette.grey;
   Object.assign(grey, { light: grey[200], main: grey[400], dark: grey[500] });
 
+  window.theme = theme;
   return theme;
 };
 
