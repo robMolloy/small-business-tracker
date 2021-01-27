@@ -1,61 +1,73 @@
-import React, { forwardRef } from "react";
-import MUISelect from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+import Input from "./Input";
 import Option from "./Option";
 
-import { v4 as uuid } from "uuid";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    formControl: { width: "100%" },
-    label: {
-      // backgroundColor: theme.palette.,
-      // padding: "2px 5px",
-      // marginLeft: "-4px",
-    },
-    helperText: { color: theme.palette.error.main },
-  };
-});
-
-const Select = forwardRef((props, ref) => {
-  let id, variant, option1, children, name, label, helperText, error;
-
+const Select = React.forwardRef((props = {}, ref) => {
+  let option1, children;
   ({
-    id = uuid(),
-    variant = "filled",
-    option1 = <Option disabled value={""}></Option>,
+    option1 = (
+      <Option disabled value="">
+        Select...
+      </Option>
+    ),
     children,
-    name,
-    label,
-    helperText,
-    error,
     ...props
   } = props);
-
-  const classes = useStyles();
-
   return (
-    <FormControl className={classes.formControl} variant={variant}>
-      <InputLabel
-        htmlFor={id}
-        className={`${classes.label} ${error ? "Mui-error" : ""}`}
-      >
-        {label}
-      </InputLabel>
-      <MUISelect native inputProps={{ name, id }} {...{ ...props, ref, error }}>
-        {option1}
-        {children}
-      </MUISelect>
-      {!!helperText && (
-        <FormHelperText className={classes.helperText}>
-          {helperText}
-        </FormHelperText>
-      )}
-    </FormControl>
+    <Input
+      select
+      SelectProps={{
+        ref: ref,
+        native: true,
+      }}
+      InputLabelProps={{ shrink: true }}
+      {...props}
+    >
+      {option1}
+      {children}
+    </Input>
   );
 });
 
 export default Select;
+
+/*
+import React from "react";
+import { TextField } from "@material-ui/core/";
+import makeStyles from "@material-ui/styles/makeStyles";
+import config from "../../../config";
+
+const Select = React.forwardRef((props = {}, ref) => {
+  let helperText, InputLabelProps, variant, color, size;
+  ({
+    helperText = "",
+    InputLabelProps = {},
+    variant = config.fields.variant,
+    color = config.fields.color,
+    size = config.fields.size,
+    ...props
+  } = props);
+
+  const classes = makeStyles((theme) => ({ root: {} }))();
+  InputLabelProps.className = classes.label;
+
+  return (
+    <TextField
+      select
+      className={classes.root}
+      // inputRef={ref}
+
+      inputRef={ref}
+      SelectProps={{
+        ref: ref,
+        native: true,
+      }}
+      inputProps={{ ref: ref, className: classes.input }}
+      fullWidth
+      {...{ ...props, helperText, InputLabelProps, color, variant, size }}
+    />
+  );
+});
+
+export default Select;
+ */
