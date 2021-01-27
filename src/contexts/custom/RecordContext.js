@@ -1,12 +1,6 @@
-import React from "react";
-import ContextProvider from "../ContextProvider";
+import CreateContextTrio from "../CreateContextTrio";
 
-const RecordContext = React.createContext();
-
-export const RecordContextProvider = (props) => {
-  return (
-    <ContextProvider Context={RecordContext} itemType="record" {...props} />
-  );
-};
-
-export default RecordContext;
+export default CreateContextTrio({
+  itemType: "record",
+  varType: "object",
+});
