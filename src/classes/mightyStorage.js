@@ -17,30 +17,51 @@ class mightyStorage {
     return localStorage.setItem(key, newData);
   }
 
-  static pushItem(key, item) {
-    let localData = this.getItem(key, []);
-    localData.push(item);
-    return this.setItem(key, localData);
+  static addItem(key, item, type = "object") {
+    let localData;
+    let newData;
+
+    if (type === "array") {
+      localData = this.getItem(key, []);
+      newData = [...localData, ...item];
+    }
+    //
+    else if (type === "object") {
+      localData = this.getItem(key, {});
+      newData = { ...localData, ...item };
+    }
+    //
+    else if (type === "number") {
+      localData = this.getItem(key, 0);
+      newData = localData + item;
+    }
+
+    return this.setItem(key, newData);
   }
 
-  static filterItem(key, item) {
-    let localData = this.getItem(key, []);
-    localData = localData.filter(
-      (localItem) => JSON.stringify(localItem) !== JSON.stringify(item)
-    );
-    return this.setItem(key, localData);
-  }
+  static removeItem(key, item, type = "object") {
+    let localData;
+    let newData;
 
-  static addItem(key, item) {
-    item = { [item.id]: item };
-    let localData = this.getItem(key, {});
-    return this.setItem(key, { ...localData, [item.id]: item });
-  }
+    if (type === "array") {
+      localData = this.getItem(key, []);
+      const index = localData.indexOf(item);
+      if (index < 0) localData.splice(index, 1);
+      newData = localData;
+    }
+    //
+    else if (typeof item === "object") {
+      localData = this.getItem(key, {});
+      delete localData[item];
+      newData = localData;
+    }
+    //
+    else if (type === "number") {
+      localData = this.getItem(key, 0);
+      newData = localData - item;
+    }
 
-  static deleteItem(key, id) {
-    let localData = this.getItem(key, []);
-    delete localData[id];
-    return this.setItem(key, localData);
+    return this.setItem(key, newData);
   }
 }
 
