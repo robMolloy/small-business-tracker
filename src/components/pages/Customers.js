@@ -24,10 +24,11 @@ const Customers = (props = {}) => {
   const customerMultiFormControls = {};
   const contactMultiFormControls = {};
 
+  const initCustomer = () => blankItems.customer();
   const initContact = () => blankItems.contact(1, { con_type: "phone" });
 
   const [customerMultiFormValues, setCustomerMultiFormValues] = React.useState(
-    blankItems.customer()
+    initCustomer()
   );
   const [contactMultiFormValues, setContactMultiFormValues] = React.useState(
     initContact()
@@ -37,7 +38,7 @@ const Customers = (props = {}) => {
     controls: customerMultiFormControls,
     values: customerMultiFormValues,
     setValues: setCustomerMultiFormValues,
-    newItem: blankItems.customer,
+    newItem: initCustomer,
   });
 
   let contactMultiFormHelper = createMultiFormHelper({

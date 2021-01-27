@@ -15,30 +15,37 @@ import Button from "../generic/buttons/Button";
 
 import createMultiFormHelper from "../../classes/createMultiFormHelper";
 import FlexBox from "../generic/flex/FlexBox";
+import getIsoDateString from "../../functions/getIsoDateString";
 
 const Records = (props = {}) => {
   const recordMultiFormControls = {};
   const recItemMultiFormControls = {};
 
+  const initRecord = () =>
+    blankItems.record(1, {
+      rec_timestamp_planned_start: getIsoDateString(),
+    });
+  const initRecItem = () => blankItems.recItem();
+
   const [recordMultiFormValues, setRecordMultiFormValues] = React.useState(
-    blankItems.record()
+    initRecord()
   );
   const [recItemMultiFormValues, setRecItemMultiFormValues] = React.useState(
-    blankItems.recItem()
+    initRecItem()
   );
 
   let recordMultiFormHelper = createMultiFormHelper({
     controls: recordMultiFormControls,
     values: recordMultiFormValues,
     setValues: setRecordMultiFormValues,
-    newItem: blankItems.record,
+    newItem: initRecord,
   });
 
   let recItemMultiFormHelper = createMultiFormHelper({
     controls: recItemMultiFormControls,
     values: recItemMultiFormValues,
     setValues: setRecItemMultiFormValues,
-    newItem: blankItems.recItem,
+    newItem: initRecItem,
   });
 
   const onSubmit = async (e) => {
