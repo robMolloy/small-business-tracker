@@ -74,6 +74,7 @@ const Projects = (props = {}) => {
         <GridContainer alignItems="center">
           <MultiForm
             {...{
+              overline: false,
               multiFormControls: projectMultiFormControls,
               multiFormValues: projectMultiFormValues,
               setMultiFormValues: setProjectMultiFormValues,

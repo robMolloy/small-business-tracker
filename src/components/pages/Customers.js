@@ -15,8 +15,12 @@ import Button from "../generic/buttons/Button";
 
 import createMultiFormHelper from "../../classes/createMultiFormHelper";
 import FlexBox from "../generic/flex/FlexBox";
+import ContactContext from "../../contexts/custom/ContactContext";
 
 const Customers = (props = {}) => {
+  const contactDispatch = React.useContext(ContactContext);
+  console.log(contactDispatch);
+
   const customerMultiFormControls = {};
   const contactMultiFormControls = {};
 
@@ -68,6 +72,7 @@ const Customers = (props = {}) => {
         <GridContainer>
           <MultiForm
             {...{
+              overline: false,
               multiFormControls: customerMultiFormControls,
               multiFormValues: customerMultiFormValues,
               setMultiFormValues: setCustomerMultiFormValues,

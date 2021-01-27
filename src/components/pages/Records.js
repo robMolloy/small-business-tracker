@@ -66,6 +66,7 @@ const Records = (props = {}) => {
         <GridContainer alignItems="center">
           <MultiForm
             {...{
+              overline: false,
               multiFormControls: recordMultiFormControls,
               multiFormValues: recordMultiFormValues,
               setMultiFormValues: setRecordMultiFormValues,
