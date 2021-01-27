@@ -18,7 +18,7 @@ const Section = (props = {}) => {
 
   const classes = makeStyles((theme) => ({
     root: {
-      padding: theme.spacing(2),
+      padding: `${theme.spacing(2)}px 0`,
       color: theme.palette?.[color]?.contrastText ?? "#000000",
       backgroundColor: theme.palette?.[color]?.main ?? "#FFFFFF",
     },

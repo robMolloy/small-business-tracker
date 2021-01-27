@@ -4,10 +4,11 @@ import { makeStyles } from "@material-ui/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import AppBar from "@material-ui/core/AppBar";
-import MUIToolbar from "@material-ui/core/Toolbar";
+// import MUIToolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 
 import Container from "../../generic/containers/Container";
+import Section from "../../generic/sections/Section";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -16,7 +17,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.mono.main,
     position: "relative",
   },
+  section: {
+    padding: 0,
+  },
   container: {
+    padding: `${theme.spacing(2)}px 0`,
     display: "flex",
     justifyContent: "space-between",
     alignContent: "center",
@@ -37,7 +42,8 @@ const HeaderBar = (props = {}) => {
 
   return (
     <AppBar className={classes.appbar}>
-      <MUIToolbar className={classes.toolbar} variant="dense">
+      <Section style={{ padding: 0 }}>
+        {/* <MUIToolbar className={classes.toolbar} variant="dense"> */}
         <Container className={classes.container}>
           {children}
 
@@ -54,7 +60,8 @@ const HeaderBar = (props = {}) => {
             </IconButton>
           )}
         </Container>
-      </MUIToolbar>
+        {/* </MUIToolbar> */}
+      </Section>
     </AppBar>
 
     // </div>
