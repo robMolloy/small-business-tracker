@@ -1,10 +1,12 @@
 import React from "react";
-import ContextProvider from "./ContextProvider";
+import ContextProvider from "../ContextProvider";
 
-export const RecItemContext = React.createContext();
+const RecItemContext = React.createContext();
 
-const RecItemContextProvider = () => {
-  return <ContextProvider Context={Context} itemType="recItem" />;
+export const RecItemContextProvider = (props) => {
+  return (
+    <ContextProvider Context={RecItemContext} itemType="recItem" {...props} />
+  );
 };
 
-export default RecItemContextProvider;
+export default RecItemContext;

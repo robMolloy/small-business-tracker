@@ -1,10 +1,12 @@
 import React from "react";
-import ContextProvider from "./ContextProvider";
+import ContextProvider from "../ContextProvider";
 
-export const ProjectContext = React.createContext();
+const ProjectContext = React.createContext();
 
-const ProjectContextProvider = () => {
-  return <ContextProvider Context={Context} itemType="project" />;
+export const ProjectContextProvider = (props) => {
+  return (
+    <ContextProvider Context={ProjectContext} itemType="project" {...props} />
+  );
 };
 
-export default ProjectContextProvider;
+export default ProjectContext;

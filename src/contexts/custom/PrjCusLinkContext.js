@@ -1,10 +1,16 @@
 import React from "react";
-import ContextProvider from "./ContextProvider";
+import ContextProvider from "../ContextProvider";
 
-export const PrjCusLinkContext = React.createContext();
+const PrjCusLinkContext = React.createContext();
 
-const PrjCusLinkContextProvider = () => {
-  return <ContextProvider Context={Context} itemType="prjCusLink" />;
+export const PrjCusLinkContextProvider = (props) => {
+  return (
+    <ContextProvider
+      Context={PrjCusLinkContext}
+      itemType="prjCusLink"
+      {...props}
+    />
+  );
 };
 
-export default PrjCusLinkContextProvider;
+export default PrjCusLinkContext;

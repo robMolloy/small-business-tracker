@@ -1,10 +1,12 @@
 import React from "react";
-import ContextProvider from "./ContextProvider";
+import ContextProvider from "../ContextProvider";
 
-export const CustomerContext = React.createContext();
+const CustomerContext = React.createContext();
 
-const CustomerContextProvider = () => {
-  return <ContextProvider Context={Context} itemType="customer" />;
+export const CustomerContextProvider = (props) => {
+  return (
+    <ContextProvider Context={CustomerContext} itemType="customer" {...props} />
+  );
 };
 
-export default CustomerContextProvider;
+export default CustomerContext;
