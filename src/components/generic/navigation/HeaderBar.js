@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   appbar: {
     textAlign: "left",
-    backgroundColor: theme.palette.mono.main,
+    backgroundColor: theme.palette.mono.light,
     position: "relative",
   },
   section: {
-    padding: 0,
+    // needs to be overridden with style
+    // padding: 0,
   },
   container: {
     padding: `${theme.spacing(2)}px 0`,
