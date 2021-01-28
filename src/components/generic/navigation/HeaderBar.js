@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.mono.light,
     position: "relative",
   },
-  section: {
-    // needs to be overridden with style
-    // padding: 0,
-  },
   container: {
     padding: `${theme.spacing(2)}px 0`,
     display: "flex",
@@ -43,7 +39,7 @@ const HeaderBar = (props = {}) => {
 
   return (
     <AppBar className={classes.appbar}>
-      <Section style={{ padding: 0 }}>
+      <Section paddingY={false}>
         {/* <MUIToolbar className={classes.toolbar} variant="dense"> */}
         <Container className={classes.container}>
           {children}

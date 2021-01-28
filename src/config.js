@@ -14,6 +14,7 @@ import HomeIcon from "@material-ui/icons/Home";
 
 const config = {
   project: { acronym: "sbt" },
+  display: { maxWidth: "sm" },
   pages: [
     {
       order: "0",

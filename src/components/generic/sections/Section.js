@@ -5,12 +5,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "../containers/Container";
 
 const Section = (props = {}) => {
-  let children, className, withContainer, color;
+  let children, className, withContainer, color, paddingY;
   ({
     children,
     className = "",
     withContainer = true,
     color = "mono",
+    paddingY = true,
     ...props
   } = props);
 
@@ -18,7 +19,7 @@ const Section = (props = {}) => {
 
   const classes = makeStyles((theme) => ({
     root: {
-      padding: `${theme.spacing(2)}px 0`,
+      padding: `${paddingY ? theme.spacing(2) : 0}px 0`,
       color: theme.palette?.[color]?.contrastText ?? "#000000",
       backgroundColor: theme.palette?.[color]?.main ?? "#FFFFFF",
     },
