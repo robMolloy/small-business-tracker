@@ -1,5 +1,6 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import danger from "@material-ui/core/colors/red";
+import config from "../../../config";
 
 const themeGenerator = (props = {}) => {
   let primary, secondary, tertiary, mono;
@@ -22,6 +23,7 @@ const themeGenerator = (props = {}) => {
       mono,
     },
     status: { danger },
+    ...config.theme,
   });
 
   const grey = theme.palette.grey;

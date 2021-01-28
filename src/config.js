@@ -14,7 +14,7 @@ import HomeIcon from "@material-ui/icons/Home";
 
 const config = {
   project: { acronym: "sbt" },
-  display: { maxWidth: "sm" },
+  display: { maxWidth: "md" },
   pages: [
     {
       order: "0",
@@ -80,7 +80,8 @@ const config = {
       Icon: HomeIcon,
     },
   ],
-  themes: [
+  theme: { spacing: 8 },
+  palettes: [
     {
       primary: "#004267",
       secondary: "#ceebfa",
@@ -94,7 +95,7 @@ const config = {
       mono: "#535b5f",
     },
   ],
-  fields: { variant: "outlined", size: "medium", color: "primary" },
+  fields: { variant: "outlined", size: "small", color: "primary" },
   timeUnits: ["second", "minute", "hour", "day", "month"],
   contactTypes: ["phone", "email"],
   contactMethods: {
