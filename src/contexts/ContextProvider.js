@@ -6,6 +6,13 @@ import ArrayReducer from "./ArrayReducer";
 import NumberReducer from "./NumberReducer";
 import ObjectReducer from "./ObjectReducer";
 
+const storageTypeSelector = { object: {}, array: [], number: 0 };
+const reducerSelector = {
+  object: ObjectReducer,
+  array: ArrayReducer,
+  number: NumberReducer,
+};
+
 const ContextProvider = (props) => {
   let itemType, Context, children, varType, afterSetState;
   ({
@@ -16,12 +23,8 @@ const ContextProvider = (props) => {
     afterSetState = mightyStorage.setItem,
   } = props);
 
-  let storageType = { object: {}, array: [], number: 0 }[varType];
-  let Reducer = {
-    object: ObjectReducer,
-    array: ArrayReducer,
-    number: NumberReducer,
-  }[varType];
+  let storageType = storageTypeSelector[varType];
+  let Reducer = reducerSelector[varType];
 
   const storageLocation = `${config.project.acronym}_${itemType}`;
 
