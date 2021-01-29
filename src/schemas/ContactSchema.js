@@ -7,7 +7,7 @@ const ContactSchema = yup.object().shape({
   con_address: yup.string().required("Address is a required field"),
   con_address_phone: yup
     .string()
-    .phone("Must be a valid phone number")
+    .phone("GB", true, "Must be a valid phone number")
     .required("Phone number is a required field"),
   con_address_email: yup
     .string()
