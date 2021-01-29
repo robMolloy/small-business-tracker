@@ -32,14 +32,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HeaderBar = (props = {}) => {
-  let children, toggleDrawer, menuButton;
-  ({ children, toggleDrawer, menuButton = true, ...props } = props);
+  let children, toggleDrawer, menuButton, color;
+  ({ children, toggleDrawer, menuButton = true, color, ...props } = props);
 
   const classes = useStyles();
 
   return (
     <AppBar className={classes.appbar}>
-      <Section paddingY={false}>
+      <Section color={color} paddingY={false}>
         {/* <MUIToolbar className={classes.toolbar} variant="dense"> */}
         <Container className={classes.container}>
           {children}
