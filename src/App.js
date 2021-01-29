@@ -16,13 +16,18 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 const App = () => {
   const Index = Home;
-
   const headerColor = "mono";
 
   return (
     <Router basename={`${process.env.REACT_APP_PUBLIC_PATH ?? ""}`}>
       <ThemeProvider theme={theme}>
-        <div className="App">
+        <div
+          className="App"
+          style={{
+            backgroundColor: theme.palette.primary.main,
+            minHeight: "100vh",
+          }}
+        >
           <NavBars
             menuButton={true}
             color={headerColor}
