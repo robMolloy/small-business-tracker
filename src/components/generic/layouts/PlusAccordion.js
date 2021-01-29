@@ -23,12 +23,16 @@ const PlusAccordion = (props = {}) => {
     <Accordion className={`${className} ${outlineClassName}`}>
       <AccordionSummary>
         <Box display="flex">
-          <Title size={2} className={classes.plus}>
-            +
-          </Title>
-          <Title align="left" flexGrow={1} size={2} centerXs={false}>
-            {summary}
-          </Title>
+          <Box>
+            <Title size={2} className={classes.plus}>
+              +
+            </Title>
+          </Box>
+          <Box flexGrow={1}>
+            <Title size={2} align="left">
+              {summary}
+            </Title>
+          </Box>
         </Box>
       </AccordionSummary>
       <AccordionDetails>
