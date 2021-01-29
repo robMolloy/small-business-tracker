@@ -1,15 +1,6 @@
 import React from "react";
-import MUIDeleteIcon from "@material-ui/icons/HighlightOff";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import MUIDeleteIcon from "@material-ui/icons/Delete";
+import Icon from "./Icon";
 
-const useStyles = makeStyles((theme) => ({
-  icon: { cursor: "pointer" },
-}));
-
-const DeleteIcon = (props) => {
-  const classes = useStyles();
-
-  return <MUIDeleteIcon className={classes.icon} {...props} />;
-};
-
-export default DeleteIcon;
+const NewIcon = (props) => <Icon Component={MUIDeleteIcon} {...props} />;
+export default NewIcon;
