@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProjectFormContents from "../form-contents/RecordFormContents";
+import RecordFormContents from "../form-contents/RecordFormContents";
 import recItemFormContents from "../form-contents/RecItemFormContents";
 
 import MultiForm from "../../generic/forms/MultiForm";
@@ -89,7 +89,7 @@ const Records = (props = {}) => {
                 multiFormControls: recordMultiFormControls,
                 multiFormValues: recordMultiFormValues,
                 setMultiFormValues: setRecordMultiFormValues,
-                Component: ProjectFormContents,
+                Component: RecordFormContents,
               }}
             />
             <MultiForm

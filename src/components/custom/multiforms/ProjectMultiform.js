@@ -19,7 +19,7 @@ import FlexBox from "../../generic/flex/FlexBox";
 
 import ProjectContext from "../../../contexts/custom/ProjectContext";
 import PrjCusLinkContext from "../../../contexts/custom/PrjCusLinkContext";
-import Accordion from "../../generic/layouts/PlusAccordion";
+import Accordion from "../../generic/layouts/Accordion";
 
 const Projects = (props = {}) => {
   const projectMultiFormControls = {};
