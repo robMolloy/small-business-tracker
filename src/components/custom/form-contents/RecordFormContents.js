@@ -12,7 +12,6 @@ import Option from "../../generic/fields/Option";
 import GridInput from "../../generic/grids/GridInput";
 import GridDateTimeInput from "../../generic/grids/GridDateTimeInput";
 import AllProjectOptions from "../options/AllProjectOptions";
-// import ProjectContext from "../../../contexts/custom/ProjectContext";
 
 const RecordFormContents = (props = {}) => {
   let formControls, values, schema;
