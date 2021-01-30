@@ -19,7 +19,7 @@ import getIsoDateString from "../../../functions/getIsoDateString";
 
 import RecordContext from "../../../contexts/custom/RecordContext";
 import RecItemContext from "../../../contexts/custom/RecItemContext";
-import Paper from "../../generic/layouts/Paper";
+import Accordion from "../../generic/layouts/Accordion";
 
 const Records = (props = {}) => {
   const recordMultiFormControls = {};
@@ -61,6 +61,7 @@ const Records = (props = {}) => {
     let valid = true;
     if (!(await recordMultiFormHelper.isValid())) valid = false;
     if (!(await recItemMultiFormHelper.isValid())) valid = false;
+    console.log(recItemMultiFormHelper.getItems());
 
     if (valid) {
       let records = recordMultiFormHelper.getItems();
@@ -79,7 +80,7 @@ const Records = (props = {}) => {
 
   return (
     <Section>
-      <Paper>
+      <Accordion summary="Add Record">
         <Form onSubmit={onSubmit}>
           <GridContainer alignItems="center">
             <MultiForm
@@ -113,7 +114,7 @@ const Records = (props = {}) => {
             </GridItem>
           </GridContainer>
         </Form>
-      </Paper>
+      </Accordion>
     </Section>
   );
 };

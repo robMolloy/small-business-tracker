@@ -1,3 +1,4 @@
+import Accordion from "../../generic/layouts/Accordion";
 import React from "react";
 
 import CustomerFormContents from "../form-contents/CustomerFormContents";
@@ -17,7 +18,6 @@ import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import FlexBox from "../../generic/flex/FlexBox";
 import CustomerContext from "../../../contexts/custom/CustomerContext";
 import ContactContext from "../../../contexts/custom/ContactContext";
-import Paper from "../../generic/layouts/Paper";
 
 const Customers = (props = {}) => {
   const customerMultiFormControls = {};
@@ -74,7 +74,7 @@ const Customers = (props = {}) => {
 
   return (
     <Section>
-      <Paper>
+      <Accordion summary="Add Customer">
         <Form onSubmit={onSubmit}>
           <GridContainer>
             <MultiForm
@@ -108,7 +108,7 @@ const Customers = (props = {}) => {
             </GridItem>
           </GridContainer>
         </Form>
-      </Paper>
+      </Accordion>
     </Section>
   );
 };

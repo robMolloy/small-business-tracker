@@ -19,7 +19,7 @@ import FlexBox from "../../generic/flex/FlexBox";
 
 import ProjectContext from "../../../contexts/custom/ProjectContext";
 import PrjCusLinkContext from "../../../contexts/custom/PrjCusLinkContext";
-import Paper from "../../generic/layouts/Paper";
+import Accordion from "../../generic/layouts/PlusAccordion";
 
 const Projects = (props = {}) => {
   const projectMultiFormControls = {};
@@ -83,7 +83,7 @@ const Projects = (props = {}) => {
 
   return (
     <Section>
-      <Paper>
+      <Accordion summary="Add Project">
         <Form onSubmit={onSubmit}>
           <GridContainer alignItems="center">
             <MultiForm
@@ -123,7 +123,7 @@ const Projects = (props = {}) => {
             </GridItem>
           </GridContainer>
         </Form>
-      </Paper>
+      </Accordion>
     </Section>
   );
 };
