@@ -12,7 +12,7 @@ const HomeWelcomeSection = (props = {}) => {
 
   const classes = makeStyles((theme) => ({
     root: {
-      height: "100vh",
+      height: "85vh",
       justifyContent: "center",
       alignItems: "center",
       display: "flex",
