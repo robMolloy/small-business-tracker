@@ -1,3 +1,4 @@
+import GridItem from "../../generic/grids/GridItem";
 import GridSelect from "../../generic/grids/GridSelect";
 import GridInput from "../../generic/grids/GridInput";
 import GridText from "../../generic/grids/GridText";
@@ -10,6 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
 import l_ from "lodash";
+import Text from "../../generic/text/Text";
 
 const ProjectFormContents = (props = {}) => {
   let formControls, values, schema;
@@ -114,10 +116,10 @@ const ProjectFormContents = (props = {}) => {
         ))}
       </GridSelect>
 
-      <GridText>What is the rate charged per unit of time worked?</GridText>
-      <GridText align="right">
-        (Leave as 0 if not charged per unit of time)
-      </GridText>
+      <GridItem>
+        <Text>What is the rate charged per unit of time worked?</Text>
+        <Text align="right">(Leave as 0 if not charged per unit of time)</Text>
+      </GridItem>
       <GridText grid={{ xs: 2 }}>£</GridText>
       <GridInput
         grid={{ xs: 9 }}

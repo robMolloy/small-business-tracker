@@ -8,10 +8,13 @@ import Schema from "../../../schemas/PrjCusLinkSchema";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import CustomerContext from "../../../contexts/custom/CustomerContext";
 
 const PrjCusLinkCustomerSelectFormContents = (props = {}) => {
   let formControls, values, width, schema;
   ({ formControls = {}, values = {}, width = 12, schema = Schema } = props);
+
+  const { items: customers } = CustomerContext.useContext();
 
   const resolver = yupResolver(schema);
   Object.assign(
@@ -21,9 +24,9 @@ const PrjCusLinkCustomerSelectFormContents = (props = {}) => {
 
   const formHelper = createFormHelper({ formControls, values });
 
-  const customerOptions = [1, 2, 3].map((id) => (
+  const customerOptions = Object.entries(customers).map(([id, customer]) => (
     <Option key={id} value={id}>
-      {`customer ${id}`}
+      {`${customer.cus_first_name} ${customer.cus_last_name}`}
     </Option>
   ));
 

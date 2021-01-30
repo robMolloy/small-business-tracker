@@ -11,10 +11,14 @@ import GridSelect from "../../generic/grids/GridSelect";
 import Option from "../../generic/fields/Option";
 import GridInput from "../../generic/grids/GridInput";
 import GridDateTimeInput from "../../generic/grids/GridDateTimeInput";
+import AllProjectOptions from "../options/AllProjectOptions";
+// import ProjectContext from "../../../contexts/custom/ProjectContext";
 
 const RecordFormContents = (props = {}) => {
   let formControls, values, schema;
   ({ formControls, values, schema = Schema } = props);
+
+  // const { items: projects } = ProjectContext.useContext();
 
   const resolver = yupResolver(schema);
   Object.assign(
@@ -23,12 +27,6 @@ const RecordFormContents = (props = {}) => {
   );
 
   const formHelper = createFormHelper({ formControls, values });
-
-  const projectOptions = [1, 2, 3].map((id) => (
-    <Option key={id} value={id}>
-      project {id}
-    </Option>
-  ));
 
   const timeUnits = config.timeUnits;
 
@@ -39,7 +37,7 @@ const RecordFormContents = (props = {}) => {
         label="Project"
         {...formHelper.fieldProps("rec_prj_id")}
       >
-        {projectOptions}
+        <AllProjectOptions />
       </GridSelect>
       <GridDateTimeInput
         grid={{ xs: 12, sm: 4 }}
