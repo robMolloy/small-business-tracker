@@ -1,45 +1,39 @@
 import React from "react";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Title from "../text/Title";
 import Box from "@material-ui/core/Box";
 import makeStyles from "@material-ui/styles/makeStyles";
+import Accordion from "./Accordion";
+import Title from "../text/Title";
+import Text from "../text/Text";
 
 // const useStyles = makeStyles((theme) => ({
 
-const PlusAccordion = (props = {}) => {
-  let children, summary, className, outline;
-  ({ children, summary, className = "", outline = 0 } = props);
-
-  let outlineOptions = ["outline_none", "outline_divider", ""];
-  let outlineClassName = outlineOptions[outline];
+const CharacterAccordion = (props = {}) => {
+  let children, character, summary, className;
+  ({ children, character = "+", summary, className = "" } = props);
 
   const classes = makeStyles((theme) => ({
-    plus: { paddingRight: theme.spacing(1) },
+    root: {},
+    character: { paddingRight: theme.spacing(1) },
   }))();
 
   return (
-    <Accordion className={`${className} ${outlineClassName}`}>
-      <AccordionSummary>
+    <Accordion
+      className={`${className} ${classes.root}`}
+      summary={
         <Box display="flex">
-          <Box>
-            <Title size={2} className={classes.plus}>
-              +
-            </Title>
+          <Box className={classes.character}>
+            <Text fontWeight="bold">{character}</Text>
           </Box>
-          <Box flexGrow={1}>
-            <Title size={2} align="left">
-              {summary}
-            </Title>
+          <Box flexGrow={1} alignContent="center">
+            <div>{summary}</div>
           </Box>
         </Box>
-      </AccordionSummary>
-      <AccordionDetails>
-        <div>{children}</div>
-      </AccordionDetails>
+      }
+    >
+      {/* <Accordion className={className} summary> */}
+      {children}
     </Accordion>
   );
 };
 
-export default PlusAccordion;
+export default CharacterAccordion;

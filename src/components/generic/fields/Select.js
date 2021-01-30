@@ -23,7 +23,7 @@ const Select = React.forwardRef((props = {}, ref) => {
       InputLabelProps={{ shrink: true }}
       {...props}
     >
-      {option1}
+      {!!option1 && option1}
       {children}
     </Input>
   );

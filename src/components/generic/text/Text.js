@@ -11,28 +11,32 @@ const Text = (props = {}) => {
     gutterBottom,
     Component,
     underline,
-    error;
+    error,
+    lineHeight,
+    fontWeight;
 
-  //
   ({
     children,
     className = "",
     align = "left",
     xsOverride = [],
-    gutterBottom = false,
+    gutterBottom = 0,
     Component = "p",
     underline = false,
     error = false,
+    lineHeight = 4,
+    fontWeight = "normal",
     ...props
   } = props);
 
   const classes = makeStyles((theme) => ({
     root: {
       textAlign: align,
-
+      fontWeight: fontWeight,
       borderBottom: underline ? `1px solid ${theme.palette.grey.main}` : "none",
       margin: 0,
-      marginBottom: gutterBottom ? theme.spacing(2) : 0,
+      marginBottom: theme.spacing(gutterBottom),
+      lineHeight: `${theme.spacing(lineHeight)}px`,
     },
     error: { color: theme.palette.error.main },
   }))();

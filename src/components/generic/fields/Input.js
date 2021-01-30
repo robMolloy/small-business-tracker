@@ -23,10 +23,14 @@ const Input = React.forwardRef((props = {}, ref) => {
       inputRef={ref}
       inputProps={{ className: classes.input }}
       fullWidth
-      // InputLabelProps={InputLabelProps}
-      // helperText={helperText}
-
-      {...{ ...props, helperText, InputLabelProps, color, variant, size }}
+      {...{
+        ...props,
+        helperText,
+        InputLabelProps,
+        color,
+        variant,
+        size,
+      }}
     />
   );
 });
