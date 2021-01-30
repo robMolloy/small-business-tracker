@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import makeStyles from "@material-ui/styles/makeStyles";
 import Accordion from "./Accordion";
-import Title from "../text/Title";
 import Text from "../text/Text";
 
 // const useStyles = makeStyles((theme) => ({
