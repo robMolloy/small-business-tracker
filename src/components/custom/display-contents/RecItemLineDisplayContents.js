@@ -1,16 +1,8 @@
-import React from "react";
-import GridItem from "../../generic/grids/GridItem";
-
 const RecItemLineDisplayContents = (props) => {
   let values;
   ({ values } = props);
-  return (
-    <>
-      <GridItem></GridItem>
-      <GridItem></GridItem>
-      <GridItem></GridItem>
-    </>
-  );
+
+  return `${values.rci_work} ${values.rci_total}`;
 };
 
 export default RecItemLineDisplayContents;
