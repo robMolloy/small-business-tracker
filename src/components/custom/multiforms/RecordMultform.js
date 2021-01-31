@@ -17,8 +17,8 @@ import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import FlexBox from "../../generic/flex/FlexBox";
 import getIsoDateString from "../../../functions/getIsoDateString";
 
-import RecordContext from "../../../contexts/custom/RecordContext";
-import RecItemContext from "../../../contexts/custom/RecItemContext";
+import RecordContext from "../../../contexts/custom/single-contexts/RecordContext";
+import RecItemContext from "../../../contexts/custom/single-contexts/RecItemContext";
 import Accordion from "../../generic/layouts/Accordion";
 
 const Records = (props = {}) => {

@@ -16,8 +16,8 @@ import Button from "../../generic/buttons/Button";
 
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import FlexBox from "../../generic/flex/FlexBox";
-import CustomerContext from "../../../contexts/custom/CustomerContext";
-import ContactContext from "../../../contexts/custom/ContactContext";
+import CustomerContext from "../../../contexts/custom/single-contexts/CustomerContext";
+import ContactContext from "../../../contexts/custom/single-contexts/ContactContext";
 
 const Customers = (props = {}) => {
   const customerMultiFormControls = {};

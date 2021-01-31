@@ -17,8 +17,8 @@ import Button from "../../generic/buttons/Button";
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import FlexBox from "../../generic/flex/FlexBox";
 
-import ProjectContext from "../../../contexts/custom/ProjectContext";
-import PrjCusLinkContext from "../../../contexts/custom/PrjCusLinkContext";
+import ProjectContext from "../../../contexts/custom/single-contexts/ProjectContext";
+import PrjCusLinkContext from "../../../contexts/custom/single-contexts/PrjCusLinkContext";
 import Accordion from "../../generic/layouts/Accordion";
 
 const Projects = (props = {}) => {
