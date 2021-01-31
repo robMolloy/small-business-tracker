@@ -4,7 +4,7 @@ import Section from "../generic/sections/Section";
 import GridContainer from "../generic/grids/GridContainer";
 import ProjectList from "../custom/lists/ProjectList";
 
-import ProjectContext from "../../contexts/custom/ProjectContext";
+import ProjectContext from "../../contexts/custom/single-contexts/ProjectContext";
 import Paper from "../generic/layouts/Paper";
 
 const Projects = () => {

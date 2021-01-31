@@ -4,7 +4,7 @@ import Section from "../generic/sections/Section";
 import GridContainer from "../generic/grids/GridContainer";
 import RecordList from "../custom/lists/RecordList";
 
-import RecordContext from "../../contexts/custom/RecordContext";
+import RecordContext from "../../contexts/custom/single-contexts/RecordContext";
 import Paper from "../generic/layouts/Paper";
 
 const Records = () => {
