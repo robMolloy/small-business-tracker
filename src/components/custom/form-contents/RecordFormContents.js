@@ -11,7 +11,8 @@ import GridSelect from "../../generic/grids/GridSelect";
 import Option from "../../generic/fields/Option";
 import GridInput from "../../generic/grids/GridInput";
 import GridDateTimeInput from "../../generic/grids/GridDateTimeInput";
-import AllProjectOptions from "../options/AllProjectOptions";
+import AllProjectOptions from "../options/item-options/AllProjectOptions";
+import TimeUnitOptions from "../options/config-options/TimeUnitOptions";
 
 const RecordFormContents = (props = {}) => {
   let formControls, values, schema;
@@ -26,8 +27,6 @@ const RecordFormContents = (props = {}) => {
   );
 
   const formHelper = createFormHelper({ formControls, values });
-
-  const timeUnits = config.timeUnits;
 
   return (
     <>
@@ -54,9 +53,7 @@ const RecordFormContents = (props = {}) => {
         label="Duration Unit"
         {...formHelper.fieldProps("rec_duration_unit")}
       >
-        {timeUnits.map((value) => (
-          <Option {...{ key: value, value }}>{l_.upperFirst(value)}</Option>
-        ))}
+        <TimeUnitOptions />
       </GridSelect>
 
       <GridInput

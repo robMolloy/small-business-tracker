@@ -8,7 +8,7 @@ import Schema from "../../../schemas/PrjCusLinkSchema";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import CustomerContext from "../../../contexts/custom/CustomerContext";
+import CustomerContext from "../../../contexts/custom/single-contexts/CustomerContext";
 
 const PrjCusLinkCustomerSelectFormContents = (props = {}) => {
   let formControls, values, width, schema;
