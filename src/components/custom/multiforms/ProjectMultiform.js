@@ -70,8 +70,10 @@ const Projects = (props = {}) => {
       let projects = projectMultiFormHelper.getItems();
       let prjCusLinks = prjCusLinkMultiFormHelper.getItems();
 
+      console.log(projects, Object.keys(projects)[0]);
+
       let prjId = Object.keys(projects)[0];
-      Object.values(prjCusLinks).forEach((pcl) => (pcl.pcl_cus_id = prjId));
+      Object.values(prjCusLinks).forEach((pcl) => (pcl.pcl_prj_id = prjId));
 
       addProjects(projects);
       addPrjCusLinks(prjCusLinks);
