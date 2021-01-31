@@ -1,6 +1,6 @@
 import React from "react";
-import ItemOptions from "./ItemOptions";
-import RecordLineDisplayContents from "../display-contents/RecordLineDisplayContents";
+import ItemOptions from ".";
+import RecordLineDisplayContents from "../../display-contents/RecordLineDisplayContents";
 
 const RecordOptions = (props) => {
   let values;

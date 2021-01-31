@@ -1,5 +1,5 @@
 import React from "react";
-import PrjCusLinkContext from "../../../contexts/custom/PrjCusLinkContext";
+import PrjCusLinkContext from "../../../../contexts/custom/single-contexts/PrjCusLinkContext";
 import PrjCusLinkOptions from "./PrjCusLinkOptions";
 
 const AllPrjCusLinkOptions = (props) => {

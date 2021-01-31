@@ -1,5 +1,5 @@
 import React from "react";
-import ContactContext from "../../../contexts/custom/ContactContext";
+import ContactContext from "../../../../contexts/custom/single-contexts/ContactContext";
 import ContactOptions from "./ContactOptions";
 
 const AllContactOptions = (props) => {

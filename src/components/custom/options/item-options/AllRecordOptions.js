@@ -1,5 +1,5 @@
 import React from "react";
-import RecordContext from "../../../contexts/custom/RecordContext";
+import RecordContext from "../../../../contexts/custom/single-contexts/RecordContext";
 import RecordOptions from "./RecordOptions";
 
 const AllRecordOptions = (props) => {

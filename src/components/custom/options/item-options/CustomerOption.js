@@ -1,6 +1,6 @@
 import React from "react";
-import ItemOptions from "./ItemOptions";
-import CustomerLineDisplayContents from "../display-contents/CustomerLineDisplayContents";
+import ItemOptions from ".";
+import CustomerLineDisplayContents from "../../display-contents/CustomerLineDisplayContents";
 
 const CustomerOptions = (props) => {
   let values;

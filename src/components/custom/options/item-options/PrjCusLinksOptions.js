@@ -1,6 +1,6 @@
 import React from "react";
-import ItemOptions from "./ItemOptions";
-import PrjCusLinkLineDisplayContents from "../display-contents/PrjCusLinkLineDisplayContents";
+import ItemOptions from ".";
+import PrjCusLinkLineDisplayContents from "../../display-contents/PrjCusLinkLineDisplayContents";
 
 const PrjCusLinkOptions = (props) => {
   let values;

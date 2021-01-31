@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectContext from "../../../contexts/custom/ProjectContext";
+import ProjectContext from "../../../../contexts/custom/single-contexts/ProjectContext";
 import ProjectOptions from "./ProjectOptions";
 
 const AllProjectOptions = (props) => {

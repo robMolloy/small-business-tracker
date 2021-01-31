@@ -1,6 +1,6 @@
 import React from "react";
-import ItemOptions from "./ItemOptions";
-import ContactLineDisplayContents from "../display-contents/ContactLineDisplayContents";
+import ItemOptions from ".";
+import ContactLineDisplayContents from "../../display-contents/ContactLineDisplayContents";
 
 const ContactOptions = (props) => {
   let values;
