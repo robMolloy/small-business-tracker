@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import AllContextProviders from "./contexts/custom/AllContextProviders";
+import AllContextProviders from "./contexts/custom/single-contexts/AllContextProviders";
 
 ReactDOM.render(
   <>

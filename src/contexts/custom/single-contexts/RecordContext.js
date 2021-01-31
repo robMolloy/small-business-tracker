@@ -1,4 +1,4 @@
-import CreateContextTrio from "../CreateContextTrio";
+import CreateContextTrio from "../../CreateContextTrio";
 
 export default CreateContextTrio({
   itemType: "record",
