@@ -4,11 +4,11 @@ import Customers from "./components/pages/Customers";
 import Projects from "./components/pages/Projects";
 import Records from "./components/pages/Records";
 
-import ContactFormContents from "./components/custom/form-contents/ContactFormContents";
-import PrjCusLinkFormContents from "./components/custom/form-contents/PrjCusLinkFormContents";
-import ProjectFormContents from "./components/custom/form-contents/ProjectFormContents";
-import RecItemFormContents from "./components/custom/form-contents/RecItemFormContents";
-import RecordFormContents from "./components/custom/form-contents/RecordFormContents";
+// import ContactFormContents from "./components/custom/form-contents/ContactFormContents";
+// import PrjCusLinkFormContents from "./components/custom/form-contents/PrjCusLinkFormContents";
+// import ProjectFormContents from "./components/custom/form-contents/ProjectFormContents";
+// import RecItemFormContents from "./components/custom/form-contents/RecItemFormContents";
+// import RecordFormContents from "./components/custom/form-contents/RecordFormContents";
 
 import HomeIcon from "@material-ui/icons/Home";
 
@@ -44,41 +44,41 @@ const config = {
       Component: Records,
       Icon: HomeIcon,
     },
-    {
-      order: "2",
-      path: "contactFormContents",
-      name: "ContactsFormContents",
-      Component: ContactFormContents,
-      Icon: HomeIcon,
-    },
-    {
-      order: "2",
-      path: "PrjCusLinkFormContents",
-      name: "PrjCusLinkFormContents",
-      Component: PrjCusLinkFormContents,
-      Icon: HomeIcon,
-    },
-    {
-      order: "2",
-      path: "ProjectFormContents",
-      name: "ProjectFormContents",
-      Component: ProjectFormContents,
-      Icon: HomeIcon,
-    },
-    {
-      order: "2",
-      path: "RecItemFormContents",
-      name: "RecItemFormContents",
-      Component: RecItemFormContents,
-      Icon: HomeIcon,
-    },
-    {
-      order: "2",
-      path: "RecordFormContents",
-      name: "RecordFormContents",
-      Component: RecordFormContents,
-      Icon: HomeIcon,
-    },
+    // {
+    //   order: "2",
+    //   path: "contactFormContents",
+    //   name: "ContactsFormContents",
+    //   Component: ContactFormContents,
+    //   Icon: HomeIcon,
+    // },
+    // {
+    //   order: "2",
+    //   path: "PrjCusLinkFormContents",
+    //   name: "PrjCusLinkFormContents",
+    //   Component: PrjCusLinkFormContents,
+    //   Icon: HomeIcon,
+    // },
+    // {
+    //   order: "2",
+    //   path: "ProjectFormContents",
+    //   name: "ProjectFormContents",
+    //   Component: ProjectFormContents,
+    //   Icon: HomeIcon,
+    // },
+    // {
+    //   order: "2",
+    //   path: "RecItemFormContents",
+    //   name: "RecItemFormContents",
+    //   Component: RecItemFormContents,
+    //   Icon: HomeIcon,
+    // },
+    // {
+    //   order: "2",
+    //   path: "RecordFormContents",
+    //   name: "RecordFormContents",
+    //   Component: RecordFormContents,
+    //   Icon: HomeIcon,
+    // },
   ],
   theme: { spacing: 8 },
   palettes: [
