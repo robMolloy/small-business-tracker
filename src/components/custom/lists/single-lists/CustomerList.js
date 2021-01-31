@@ -1,6 +1,6 @@
 import React from "react";
-import CustomerLineDisplayContents from "../display-contents/CustomerLineDisplayContents";
-import ItemList from "../../generic/lists/ItemList";
+import CustomerLineDisplayContents from "../../display-contents/CustomerLineDisplayContents";
+import ItemList from "../../../generic/lists/ItemList";
 
 const CustomerList = (props) => {
   let values, Container;

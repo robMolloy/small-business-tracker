@@ -2,7 +2,7 @@ import CustomerMultiform from "../custom/multiforms/CustomerMultiform";
 
 import Section from "../generic/sections/Section";
 import GridContainer from "../generic/grids/GridContainer";
-import CustomerList from "../custom/lists/CustomerList";
+import CustomerList from "../custom/lists/single-lists/CustomerList";
 
 import CustomerContext from "../../contexts/custom/single-contexts/CustomerContext";
 import Paper from "../generic/layouts/Paper";

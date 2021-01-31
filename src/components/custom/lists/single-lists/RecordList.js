@@ -1,6 +1,6 @@
 import React from "react";
-import ItemList from "../../generic/lists/ItemList";
-import RecordLineDisplayContents from "../display-contents/RecordLineDisplayContents";
+import ItemList from "../../../generic/lists/ItemList";
+import RecordLineDisplayContents from "../../display-contents/RecordLineDisplayContents";
 
 const RecordList = (props) => {
   let values, Container;

@@ -1,6 +1,6 @@
 import React from "react";
-import ItemList from "../../generic/lists/ItemList";
-import ContactLineDisplayContents from "../display-contents/ContactLineDisplayContents";
+import ItemList from "../../../generic/lists/ItemList";
+import ContactLineDisplayContents from "../../display-contents/ContactLineDisplayContents";
 
 const ContactList = (props) => {
   let values, Container;
@@ -12,5 +12,5 @@ const ContactList = (props) => {
     />
   );
 };
-
+//
 export default ContactList;
