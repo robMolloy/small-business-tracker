@@ -1,14 +1,11 @@
 import createFormHelper from "../../../classes/createFormHelper";
 
-import config from "../../../config";
 import Schema from "../../../schemas/RecordSchema";
 
-import l_ from "lodash";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import GridSelect from "../../generic/grids/GridSelect";
-import Option from "../../generic/fields/Option";
 import GridInput from "../../generic/grids/GridInput";
 import GridDateTimeInput from "../../generic/grids/GridDateTimeInput";
 import AllProjectOptions from "../options/item-options/AllProjectOptions";
@@ -17,8 +14,6 @@ import TimeUnitOptions from "../options/config-options/TimeUnitOptions";
 const RecordFormContents = (props = {}) => {
   let formControls, values, schema;
   ({ formControls, values, schema = Schema } = props);
-
-  // const { items: projects } = ProjectContext.useContext();
 
   const resolver = yupResolver(schema);
   Object.assign(
