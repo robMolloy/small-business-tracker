@@ -61,7 +61,6 @@ const Records = (props = {}) => {
     let valid = true;
     if (!(await recordMultiFormHelper.isValid())) valid = false;
     if (!(await recItemMultiFormHelper.isValid())) valid = false;
-    console.log(recItemMultiFormHelper.getItems());
 
     if (valid) {
       let records = recordMultiFormHelper.getItems();
