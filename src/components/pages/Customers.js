@@ -2,21 +2,25 @@ import CustomerMultiform from "../custom/multiforms/CustomerMultiform";
 
 import Section from "../generic/sections/Section";
 import GridContainer from "../generic/grids/GridContainer";
-import CustomerList from "../custom/lists/single-lists/CustomerList";
+import ContactsOnCustomersList from "../custom/lists/dual-lists/ContactsOnCustomersList";
+// import CustomerContext from "../../contexts/custom/single-contexts/CustomerContext";
+// import ContactContext from "../../contexts/custom/single-contexts/ContactContext";
 
-import CustomerContext from "../../contexts/custom/single-contexts/CustomerContext";
-import Paper from "../generic/layouts/Paper";
+import DualContactsOnCustomersContext from "../../contexts/custom/dual-contexts/DualContactsOnCustomersContext";
 
 const Customers = () => {
-  const { items } = CustomerContext.useContext();
-
+  const { items } = DualContactsOnCustomersContext();
+  // const { items: customers } = CustomerContext.useContext();
+  // const { items: contacts } = ContactContext.useContext();
+  //
   return (
     <>
       <CustomerMultiform />
 
       <Section>
         <GridContainer>
-          <CustomerList values={items} Container={Paper} />
+          <ContactsOnCustomersList values={items} />
+          {/* <ContactsOnCustomersList /> */}
         </GridContainer>
       </Section>
     </>

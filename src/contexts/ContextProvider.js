@@ -29,6 +29,7 @@ const ContextProvider = (props) => {
   const storageLocation = `${config.project.acronym}_${itemType}`;
 
   const initStorage = () => mightyStorage.getItem(storageLocation, storageType);
+  console.log(itemType, initStorage());
   const [items, dispatch] = React.useReducer(Reducer, initStorage());
 
   React.useEffect(() => {
