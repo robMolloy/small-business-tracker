@@ -12,18 +12,13 @@ const DualItemList = (props) => {
     DetailsComponent,
   } = props);
 
-  console.log(values);
-
   return (
     <>
       {Object.entries(values).map(([id, group]) => {
-        const summaryItem = group[id];
-        delete group[id];
+        let summaryItem;
+        ({ [id]: summaryItem, ...group } = group);
+
         const displayItems = group;
-        //
-        //
-        //
-        //
 
         return (
           <GridItem key={id}>
