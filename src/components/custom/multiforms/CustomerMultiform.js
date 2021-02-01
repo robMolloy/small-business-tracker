@@ -7,7 +7,6 @@ import ContactFormContents from "../form-contents/ContactFormContents";
 import MultiForm from "../../generic/forms/MultiForm";
 import Form from "../../generic/forms/Form";
 import GridContainer from "../../generic/grids/GridContainer";
-import Section from "../../generic/sections/Section";
 
 import blankItems from "../../../data/blankItems";
 import GridItem from "../../generic/grids/GridItem";
@@ -73,43 +72,41 @@ const Customers = (props = {}) => {
   };
 
   return (
-    <Section>
-      <Accordion summary="Add Customer">
-        <Form onSubmit={onSubmit}>
-          <GridContainer>
-            <MultiForm
-              {...{
-                overline: false,
-                multiFormControls: customerMultiFormControls,
-                multiFormValues: customerMultiFormValues,
-                setMultiFormValues: setCustomerMultiFormValues,
-                Component: CustomerFormContents,
-              }}
-            />
-            <MultiForm
-              {...{
-                multiFormControls: contactMultiFormControls,
-                multiFormValues: contactMultiFormValues,
-                setMultiFormValues: setContactMultiFormValues,
-                Component: ContactFormContents,
-                remove: true,
-              }}
-            />
-            <GridItem xs={12}>
-              <FlexBox justifyContent="space-between">
-                <Button
-                  color="secondary"
-                  onClick={() => contactMultiFormHelper.addItem()}
-                >
-                  +
-                </Button>
-                <ButtonPrimary type="submit">Submit</ButtonPrimary>
-              </FlexBox>
-            </GridItem>
-          </GridContainer>
-        </Form>
-      </Accordion>
-    </Section>
+    <Accordion summary="Add Customer">
+      <Form onSubmit={onSubmit}>
+        <GridContainer>
+          <MultiForm
+            {...{
+              overline: false,
+              multiFormControls: customerMultiFormControls,
+              multiFormValues: customerMultiFormValues,
+              setMultiFormValues: setCustomerMultiFormValues,
+              Component: CustomerFormContents,
+            }}
+          />
+          <MultiForm
+            {...{
+              multiFormControls: contactMultiFormControls,
+              multiFormValues: contactMultiFormValues,
+              setMultiFormValues: setContactMultiFormValues,
+              Component: ContactFormContents,
+              remove: true,
+            }}
+          />
+          <GridItem xs={12}>
+            <FlexBox justifyContent="space-between">
+              <Button
+                color="secondary"
+                onClick={() => contactMultiFormHelper.addItem()}
+              >
+                +
+              </Button>
+              <ButtonPrimary type="submit">Submit</ButtonPrimary>
+            </FlexBox>
+          </GridItem>
+        </GridContainer>
+      </Form>
+    </Accordion>
   );
 };
 

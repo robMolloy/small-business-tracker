@@ -6,7 +6,6 @@ import recItemFormContents from "../form-contents/RecItemFormContents";
 import MultiForm from "../../generic/forms/MultiForm";
 import Form from "../../generic/forms/Form";
 import GridContainer from "../../generic/grids/GridContainer";
-import Section from "../../generic/sections/Section";
 
 import blankItems from "../../../data/blankItems";
 import GridItem from "../../generic/grids/GridItem";
@@ -78,43 +77,41 @@ const Records = (props = {}) => {
   };
 
   return (
-    <Section>
-      <Accordion summary="Add Record">
-        <Form onSubmit={onSubmit}>
-          <GridContainer alignItems="center">
-            <MultiForm
-              {...{
-                overline: false,
-                multiFormControls: recordMultiFormControls,
-                multiFormValues: recordMultiFormValues,
-                setMultiFormValues: setRecordMultiFormValues,
-                Component: RecordFormContents,
-              }}
-            />
-            <MultiForm
-              {...{
-                multiFormControls: recItemMultiFormControls,
-                multiFormValues: recItemMultiFormValues,
-                setMultiFormValues: setRecItemMultiFormValues,
-                Component: recItemFormContents,
-                remove: true,
-              }}
-            />
-            <GridItem xs={12}>
-              <FlexBox justifyContent="space-between">
-                <Button
-                  color="secondary"
-                  onClick={() => recItemMultiFormHelper.addItem()}
-                >
-                  +
-                </Button>
-                <ButtonPrimary type="submit">Submit</ButtonPrimary>
-              </FlexBox>
-            </GridItem>
-          </GridContainer>
-        </Form>
-      </Accordion>
-    </Section>
+    <Accordion summary="Add Record">
+      <Form onSubmit={onSubmit}>
+        <GridContainer alignItems="center">
+          <MultiForm
+            {...{
+              overline: false,
+              multiFormControls: recordMultiFormControls,
+              multiFormValues: recordMultiFormValues,
+              setMultiFormValues: setRecordMultiFormValues,
+              Component: RecordFormContents,
+            }}
+          />
+          <MultiForm
+            {...{
+              multiFormControls: recItemMultiFormControls,
+              multiFormValues: recItemMultiFormValues,
+              setMultiFormValues: setRecItemMultiFormValues,
+              Component: recItemFormContents,
+              remove: true,
+            }}
+          />
+          <GridItem xs={12}>
+            <FlexBox justifyContent="space-between">
+              <Button
+                color="secondary"
+                onClick={() => recItemMultiFormHelper.addItem()}
+              >
+                +
+              </Button>
+              <ButtonPrimary type="submit">Submit</ButtonPrimary>
+            </FlexBox>
+          </GridItem>
+        </GridContainer>
+      </Form>
+    </Accordion>
   );
 };
 

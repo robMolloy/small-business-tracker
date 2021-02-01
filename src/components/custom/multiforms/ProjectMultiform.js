@@ -6,7 +6,6 @@ import CustomerSelectFormContents from "../form-contents/PrjCusLinkCustomerSelec
 import MultiForm from "../../generic/forms/MultiForm";
 import Form from "../../generic/forms/Form";
 import GridContainer from "../../generic/grids/GridContainer";
-import Section from "../../generic/sections/Section";
 
 import blankItems from "../../../data/blankItems";
 import GridItem from "../../generic/grids/GridItem";
@@ -84,49 +83,47 @@ const Projects = (props = {}) => {
   };
 
   return (
-    <Section>
-      <Accordion summary="Add Project">
-        <Form onSubmit={onSubmit}>
-          <GridContainer alignItems="center">
-            <MultiForm
-              {...{
-                overline: false,
-                multiFormControls: projectMultiFormControls,
-                multiFormValues: projectMultiFormValues,
-                setMultiFormValues: setProjectMultiFormValues,
-                Component: ProjectFormContents,
-              }}
-            />
-            {matches.length !== 0 && (
-              <GridText error>
-                It looks like you've got matching customers, each value should
-                be unique
-              </GridText>
-            )}
-            <MultiForm
-              {...{
-                multiFormControls: prjCusLinkMultiFormControls,
-                multiFormValues: prjCusLinkMultiFormValues,
-                setMultiFormValues: setPrjCusLinkMultiFormValues,
-                Component: CustomerSelectFormContents,
-                remove: true,
-              }}
-            />
-            <GridItem xs={12}>
-              <FlexBox justifyContent="space-between">
-                <Button
-                  color="secondary"
-                  onClick={() => prjCusLinkMultiFormHelper.addItem()}
-                >
-                  +
-                </Button>
-                <ButtonPrimary type="submit">Submit</ButtonPrimary>
-              </FlexBox>
-            </GridItem>
-          </GridContainer>
-        </Form>
-      </Accordion>
-    </Section>
+    <Accordion summary="Add Project">
+      <Form onSubmit={onSubmit}>
+        <GridContainer alignItems="center">
+          <MultiForm
+            {...{
+              overline: false,
+              multiFormControls: projectMultiFormControls,
+              multiFormValues: projectMultiFormValues,
+              setMultiFormValues: setProjectMultiFormValues,
+              Component: ProjectFormContents,
+            }}
+          />
+          {matches.length !== 0 && (
+            <GridText error>
+              It looks like you've got matching customers, each value should be
+              unique
+            </GridText>
+          )}
+          <MultiForm
+            {...{
+              multiFormControls: prjCusLinkMultiFormControls,
+              multiFormValues: prjCusLinkMultiFormValues,
+              setMultiFormValues: setPrjCusLinkMultiFormValues,
+              Component: CustomerSelectFormContents,
+              remove: true,
+            }}
+          />
+          <GridItem xs={12}>
+            <FlexBox justifyContent="space-between">
+              <Button
+                color="secondary"
+                onClick={() => prjCusLinkMultiFormHelper.addItem()}
+              >
+                +
+              </Button>
+              <ButtonPrimary type="submit">Submit</ButtonPrimary>
+            </FlexBox>
+          </GridItem>
+        </GridContainer>
+      </Form>
+    </Accordion>
   );
 };
 
