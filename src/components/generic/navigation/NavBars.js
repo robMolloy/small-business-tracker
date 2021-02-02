@@ -11,6 +11,16 @@ const NavBars = (props = {}) => {
 
   return (
     <>
+      <HeaderBar
+        {...{
+          style: { position: "relative" },
+          toggleDrawer,
+          menuButton,
+          color,
+        }}
+      >
+        {headerChildren}
+      </HeaderBar>
       <HeaderBar {...{ toggleDrawer, menuButton, color }}>
         {headerChildren}
       </HeaderBar>
