@@ -13,7 +13,8 @@ const useRecItemsOnRecordsContext = () => {
     rtn[recId][id] = rci;
   });
 
-  return rtn;
+  //
+  return { items: rtn };
 };
 
-export default RecItemsOnRecords;
+export default useRecItemsOnRecordsContext;

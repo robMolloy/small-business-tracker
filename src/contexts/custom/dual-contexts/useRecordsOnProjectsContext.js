@@ -13,7 +13,7 @@ const useRecordsOnProjectsContext = () => {
     rtn[prjId][id] = rec;
   });
 
-  return rtn;
+  return { items: rtn };
 };
 
 export default useRecordsOnProjectsContext;

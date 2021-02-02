@@ -18,7 +18,7 @@ const useCustomersOnProjectsContext = () => {
     rtn[prjId][cusId] = customers[cusId];
   });
 
-  return rtn;
+  return { items: rtn };
 };
 
 export default useCustomersOnProjectsContext;
