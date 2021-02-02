@@ -1,3 +1,4 @@
+import React from "react";
 import createFormHelper from "../../../classes/createFormHelper";
 
 import GridSelect from "../../generic/grids/GridSelect";
@@ -8,8 +9,17 @@ import GridText from "../../generic/grids/GridText";
 import normalizeCurrency from "../../../functions/normalizeCurrency";
 
 import { useForm } from "react-hook-form";
-import Schema from "../../../schemas/RecItemSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import Schema from "../../../schemas/RecItemSchema";
+
+import GridItem from "../../generic/grids/GridItem";
+import useWorkContext from "../../../contexts/custom/indexed-contexts/useWorkContext";
+import useUnitsContext from "../../../contexts/custom/indexed-contexts/useUnitsContext";
+import IconButton from "../../generic/buttons/IconButton";
+
+import EditIcon from "../../generic/icons/EditIcon";
+import SelectIcon from "../../generic/icons/SelectIcon";
 
 const calculateTotal = (a, b) => {
   const total = parseFloat(a) * parseFloat(b);
@@ -31,39 +41,74 @@ const RecItemFormContents = (props = {}) => {
     useForm({ resolver, mode: "onChange", defaultValues: values })
   );
 
+  const [editWork, setEditWork] = React.useState(false);
+  const [editUnit, setEditUnit] = React.useState(false);
+
   const formHelper = createFormHelper({ formControls, values });
 
   const rci_qty = formControls.watch("rci_qty");
   const rci_cost_per_unit = formControls.watch("rci_cost_per_unit");
 
-  const workOptions = [1, 2, 3].map((id) => (
-    <Option key={id} value={id}>
-      work {id}
+  const { items: work } = useWorkContext();
+  const { items: units } = useUnitsContext();
+
+  const workOptions = Object.values(work).map((val) => (
+    <Option key={val} value={val}>
+      {val}
     </Option>
   ));
-  const unitOptions = [1, 2, 3].map((id) => (
-    <Option key={id} value={id}>
-      unit {id}
+  const unitOptions = Object.values(units).map((val) => (
+    <Option key={val} value={val}>
+      {val}
     </Option>
   ));
 
   return (
     <>
-      <GridSelect
-        grid={{ xs: 8 }}
-        label="Work"
-        {...formHelper.fieldProps("rci_work")}
-      >
-        {workOptions}
-      </GridSelect>
+      <GridItem xs={2}>
+        <IconButton onClick={() => setEditWork(!editWork)}>
+          {editWork ? <EditIcon /> : <SelectIcon />}
+        </IconButton>
+      </GridItem>
+      {editWork && (
+        <GridInput
+          grid={{ xs: 4 }}
+          label="Work"
+          {...formHelper.fieldProps("rci_work")}
+        />
+      )}
+      {!editWork && (
+        <GridSelect
+          grid={{ xs: 4 }}
+          label="Work"
+          {...formHelper.fieldProps("rci_work")}
+        >
+          {workOptions}
+        </GridSelect>
+      )}
 
-      <GridSelect
-        grid={{ xs: 4 }}
-        label="Unit"
-        {...formHelper.fieldProps("rci_unit")}
-      >
-        {unitOptions}
-      </GridSelect>
+      <GridItem xs={2}>
+        <IconButton onClick={() => setEditUnit(!editUnit)}>
+          {editUnit ? <EditIcon /> : <SelectIcon />}
+        </IconButton>
+      </GridItem>
+
+      {editUnit && (
+        <GridInput
+          grid={{ xs: 4 }}
+          label="Unit"
+          {...formHelper.fieldProps("rci_unit")}
+        />
+      )}
+      {!editUnit && (
+        <GridSelect
+          grid={{ xs: 4 }}
+          label="Unit"
+          {...formHelper.fieldProps("rci_unit")}
+        >
+          {unitOptions}
+        </GridSelect>
+      )}
 
       <GridInput
         grid={{ xs: 3 }}
