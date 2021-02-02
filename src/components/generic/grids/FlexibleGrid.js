@@ -1,9 +1,8 @@
 import React from "react";
 
 import GridContainer from "./GridContainer";
-import GridItem from "./GridItem";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
 const FlexibleGrid = (props = {}) => {
   let array, className, alignItems, justify, wrap;
