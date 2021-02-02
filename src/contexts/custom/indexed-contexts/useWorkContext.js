@@ -7,13 +7,15 @@ const useWorkContext = () => {
 
   const rtn = {};
 
-  Object.values(projects).forEach(
-    (item) => (rtn[item.prj_default_work] = item.prj_default_work)
-  );
+  Object.values(projects).forEach((item) => {
+    const value = item.prj_default_work;
+    if (value !== "") rtn[value] = value;
+  });
 
-  Object.values(recItems).forEach(
-    (item) => (rtn[item.rci_work] = item.rci_work)
-  );
+  Object.values(recItems).forEach((item) => {
+    const value = item.rci_work;
+    if (value !== "") rtn[value] = value;
+  });
 
   return { items: rtn };
 };
