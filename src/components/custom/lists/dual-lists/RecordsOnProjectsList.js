@@ -1,10 +1,21 @@
 import React from "react";
-import useRecordsOnProjectsContext from "../../../../contexts/custom/dual-contexts/useRecordsOnProjectsContext";
+import DualItemList from "../../../generic/lists/DualItemList";
+import ProjectLineDisplayContents from "../../display-contents/ProjectLineDisplayContents";
+import RecordList from "../single-lists/RecordList";
 
 const RecordsOnProjectsList = (props) => {
-  const recordsOnProjects = useRecordsOnProjectsContext();
+  let values;
+  ({ values } = props);
 
-  return <div></div>;
+  return (
+    <DualItemList
+      {...{
+        values: values,
+        SummaryComponent: ProjectLineDisplayContents,
+        DetailsComponent: RecordList,
+      }}
+    />
+  );
 };
 
 export default RecordsOnProjectsList;

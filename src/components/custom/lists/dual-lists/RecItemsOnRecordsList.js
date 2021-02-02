@@ -1,11 +1,21 @@
 import React from "react";
-
-import useRecItemsOnRecordsContext from "../../../../contexts/custom/dual-contexts/useRecItemsOnRecordsContext";
+import DualItemList from "../../../generic/lists/DualItemList";
+import RecordLineDisplayContents from "../../display-contents/RecordLineDisplayContents";
+import RecItemList from "../single-lists/RecItemList";
 
 const RecItemsOnRecordsList = (props) => {
-  const recItemsOnRecords = useRecItemsOnRecordsContext();
+  let values;
+  ({ values } = props);
 
-  return <div></div>;
+  return (
+    <DualItemList
+      {...{
+        values: values,
+        SummaryComponent: RecordLineDisplayContents,
+        DetailsComponent: RecItemList,
+      }}
+    />
+  );
 };
 
 export default RecItemsOnRecordsList;
