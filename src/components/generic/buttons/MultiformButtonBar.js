@@ -21,7 +21,7 @@ const MultiformButtonBar = (props) => {
       </GridItem>
       {middle}
       <GridItem xs={2}>
-        <ButtonPrimary type="submit" {...submitProps}>
+        <ButtonPrimary fullWidth type="submit" {...submitProps}>
           Submit
         </ButtonPrimary>
       </GridItem>
