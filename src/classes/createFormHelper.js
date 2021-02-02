@@ -12,7 +12,7 @@ class formHelper {
       onChange: (e) => (this.values[name] = e.target.value),
       defaultValue: this.values[name],
       name,
-      // autoComplete: "off",
+      autoComplete: "new",
     };
   }
 
