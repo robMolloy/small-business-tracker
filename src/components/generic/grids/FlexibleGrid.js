@@ -3,6 +3,7 @@ import React from "react";
 import GridContainer from "./GridContainer";
 import GridItem from "./GridItem";
 import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 const FlexibleGrid = (props = {}) => {
   let array, className, alignItems, justify, wrap;
@@ -24,7 +25,9 @@ const FlexibleGrid = (props = {}) => {
       {...props}
     >
       {array.map((child, j) => (
-        <GridItem key={j}>{child}</GridItem>
+        <Grid item key={j}>
+          {child}
+        </Grid>
       ))}
     </GridContainer>
   );
