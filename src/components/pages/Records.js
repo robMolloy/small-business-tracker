@@ -18,6 +18,8 @@ const Records = () => {
 
   const [sort, setSort] = React.useState(1);
 
+  const buttonText = ["Project", "Record"];
+
   return (
     <>
       <Section>
@@ -26,20 +28,13 @@ const Records = () => {
 
       <Section>
         <ButtonRow
-          array={[
+          array={buttonText.map((txt, j) => (
             <Button
-              color={sort === 0 ? "secondary" : "default"}
-              onClick={() => setSort(0)}
-            >
-              Project
-            </Button>,
-            <Button
-              color={sort === 1 ? "secondary" : "default"}
-              onClick={() => setSort(1)}
-            >
-              Record
-            </Button>,
-          ]}
+              children={txt}
+              color={sort === j ? "secondary" : "default"}
+              onClick={() => setSort(j)}
+            />
+          ))}
         />
       </Section>
 
