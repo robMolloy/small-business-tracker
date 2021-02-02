@@ -1,25 +1,52 @@
+import React from "react";
+
 import RecordMultform from "../custom/multiforms/RecordMultform";
 
 import Section from "../generic/sections/Section";
 import GridContainer from "../generic/grids/GridContainer";
-import RecordList from "../custom/lists/single-lists/RecordList";
-
-import RecordContext from "../../contexts/custom/single-contexts/RecordContext";
-import Paper from "../generic/layouts/Paper";
 
 import useRecordsOnProjectsContext from "../../contexts/custom/dual-contexts/useRecordsOnProjectsContext";
+import RecordsOnProjectsList from "../custom/lists/dual-lists/RecordsOnProjectsList";
+import RecItemsOnRecordsList from "../custom/lists/dual-lists/RecItemsOnRecordsList";
+import useRecItemsOnRecordsContext from "../../contexts/custom/dual-contexts/useRecItemsOnRecordsContext";
+import ButtonRow from "../generic/grids/ButtonRow";
+import Button from "../generic/buttons/Button";
 
 const Records = () => {
-  const { items } = RecordContext.useContext();
-  console.log(useRecordsOnProjectsContext());
+  const { items: recordsOnProjects } = useRecordsOnProjectsContext();
+  const { items: recItemsOnRecords } = useRecItemsOnRecordsContext();
+
+  const [sort, setSort] = React.useState(0);
 
   return (
     <>
-      <RecordMultform />
+      <Section>
+        <RecordMultform />
+      </Section>
+
+      <Section>
+        <ButtonRow
+          array={[
+            <Button
+              color={sort === 0 ? "secondary" : "default"}
+              onClick={() => setSort(0)}
+            >
+              Project
+            </Button>,
+            <Button
+              color={sort === 1 ? "secondary" : "default"}
+              onClick={() => setSort(1)}
+            >
+              Record
+            </Button>,
+          ]}
+        />
+      </Section>
 
       <Section>
         <GridContainer>
-          <RecordList values={items} Container={Paper} />
+          {sort === 0 && <RecordsOnProjectsList values={recordsOnProjects} />}
+          {sort === 1 && <RecItemsOnRecordsList values={recItemsOnRecords} />}
         </GridContainer>
       </Section>
     </>
