@@ -12,8 +12,8 @@ import AllProjectOptions from "../options/item-options/AllProjectOptions";
 import TimeUnitOptions from "../options/config-options/TimeUnitOptions";
 
 const RecordFormContents = (props = {}) => {
-  let formControls, values, schema;
-  ({ formControls, values, schema = Schema } = props);
+  let formControls, values, schema, width;
+  ({ formControls, values, schema = Schema, width = 12 } = props);
 
   const resolver = yupResolver(schema);
   Object.assign(
@@ -52,7 +52,7 @@ const RecordFormContents = (props = {}) => {
       </GridSelect>
 
       <GridInput
-        grid={{ xs: 12 }}
+        grid={{ xs: width }}
         label="Description"
         {...formHelper.fieldProps("rec_description")}
         multiline

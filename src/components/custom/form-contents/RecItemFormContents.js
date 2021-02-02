@@ -13,7 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const calculateTotal = (a, b) => {
   const total = parseFloat(a) * parseFloat(b);
-  return normalizeCurrency(isNaN(total) ? 0 : total);
+  return isNaN(total) ? 0 : total;
 };
 
 const RecItemFormContents = (props = {}) => {
@@ -68,7 +68,19 @@ const RecItemFormContents = (props = {}) => {
       <GridInput
         grid={{ xs: 3 }}
         label="Quantity"
-        {...formHelper.fieldProps("rci_qty")}
+        {...{
+          ...formHelper.fieldProps("rci_qty"),
+          onChange: (e) => {
+            values["rci_qty"] = e.target.value;
+            formHelper.setValue(
+              `rci_total`,
+              normalizeCurrency(
+                calculateTotal(rci_qty, rci_cost_per_unit),
+                false
+              )
+            );
+          },
+        }}
       />
       <GridText align="center" grid={{ xs: 1 }}>
         x
@@ -76,21 +88,34 @@ const RecItemFormContents = (props = {}) => {
       <GridInput
         grid={{ xs: 4 }}
         label="£ / Unit"
-        {...formHelper.fieldProps("rci_cost_per_unit")}
+        {...{
+          ...formHelper.fieldProps("rci_cost_per_unit"),
+          onChange: (e) => {
+            values["rci_cost_per_unit"] = e.target.value;
+            formHelper.setValue(
+              `rci_total`,
+              normalizeCurrency(
+                calculateTotal(rci_qty, rci_cost_per_unit),
+                false
+              )
+            );
+          },
+        }}
       />
       <GridText grid={{ xs: 1 }}>=</GridText>
 
       <GridText align="right" grid={{ xs: width - 9 }}>
-        {calculateTotal(rci_qty, rci_cost_per_unit)}
+        {normalizeCurrency(calculateTotal(rci_qty, rci_cost_per_unit), true)}
       </GridText>
 
+      {/* <GridItem xs={11}> */}
       <input
         style={{ display: "none" }}
         name="rci_total"
         ref={formControls.register}
-        value={calculateTotal(rci_qty, rci_cost_per_unit)}
         readOnly
       />
+      {/* </GridItem> */}
     </>
   );
 };
