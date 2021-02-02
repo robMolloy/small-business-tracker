@@ -8,17 +8,14 @@ import Form from "../../generic/forms/Form";
 import GridContainer from "../../generic/grids/GridContainer";
 
 import blankItems from "../../../data/blankItems";
-import GridItem from "../../generic/grids/GridItem";
 import GridText from "../../generic/grids/GridText";
-import ButtonPrimary from "../../generic/buttons/ButtonPrimary";
-import Button from "../../generic/buttons/Button";
 
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
-import FlexBox from "../../generic/flex/FlexBox";
 
 import ProjectContext from "../../../contexts/custom/single-contexts/ProjectContext";
 import PrjCusLinkContext from "../../../contexts/custom/single-contexts/PrjCusLinkContext";
 import Accordion from "../../generic/layouts/Accordion";
+import MultiformButtonBar from "../../generic/buttons/MultiformButtonBar";
 
 const Projects = (props = {}) => {
   const projectMultiFormControls = {};
@@ -110,17 +107,10 @@ const Projects = (props = {}) => {
               remove: true,
             }}
           />
-          <GridItem xs={12}>
-            <FlexBox justifyContent="space-between">
-              <Button
-                color="secondary"
-                onClick={() => prjCusLinkMultiFormHelper.addItem()}
-              >
-                +
-              </Button>
-              <ButtonPrimary type="submit">Submit</ButtonPrimary>
-            </FlexBox>
-          </GridItem>
+
+          <MultiformButtonBar
+            addProps={{ onClick: () => prjCusLinkMultiFormHelper.addItem() }}
+          />
         </GridContainer>
       </Form>
     </Accordion>

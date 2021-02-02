@@ -1,28 +1,26 @@
 import React from "react";
 
 import RecordFormContents from "../form-contents/RecordFormContents";
-import recItemFormContents from "../form-contents/RecItemFormContents";
+import RecItemFormContents from "../form-contents/RecItemFormContents";
 
 import MultiForm from "../../generic/forms/MultiForm";
 import Form from "../../generic/forms/Form";
-import GridContainer from "../../generic/grids/GridContainer";
 
-import blankItems from "../../../data/blankItems";
+import Accordion from "../../generic/layouts/Accordion";
+import MultiformButtonBar from "../../generic/buttons/MultiformButtonBar";
+import RefreshIcon from "../../generic/icons/RefreshIcon";
+
+import GridContainer from "../../generic/grids/GridContainer";
 import GridItem from "../../generic/grids/GridItem";
-import ButtonPrimary from "../../generic/buttons/ButtonPrimary";
-import Button from "../../generic/buttons/Button";
 
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
-import FlexBox from "../../generic/flex/FlexBox";
 import getIsoDateString from "../../../functions/getIsoDateString";
+import normalizeCurrency from "../../../functions/normalizeCurrency";
+import blankItems from "../../../data/blankItems";
+import isNumber from "../../../schemas/tests/isNumber";
 
 import RecordContext from "../../../contexts/custom/single-contexts/RecordContext";
 import RecItemContext from "../../../contexts/custom/single-contexts/RecItemContext";
-import Accordion from "../../generic/layouts/Accordion";
-
-import RefreshIcon from "../../generic/icons/RefreshIcon";
-import normalizeCurrency from "../../../functions/normalizeCurrency";
-import isNumber from "../../../schemas/tests/isNumber";
 
 const Records = (props = {}) => {
   const recordMultiFormControls = {};
@@ -114,26 +112,20 @@ const Records = (props = {}) => {
           >
             <RefreshIcon />
           </GridItem>
+
           <MultiForm
             {...{
               multiFormControls: recItemMultiFormControls,
               multiFormValues: recItemMultiFormValues,
               setMultiFormValues: setRecItemMultiFormValues,
-              Component: recItemFormContents,
+              Component: RecItemFormContents,
               remove: true,
             }}
           />
-          <GridItem xs={12}>
-            <FlexBox justifyContent="space-between">
-              <Button
-                color="secondary"
-                onClick={() => recItemMultiFormHelper.addItem()}
-              >
-                +
-              </Button>
-              <ButtonPrimary type="submit">Submit</ButtonPrimary>
-            </FlexBox>
-          </GridItem>
+
+          <MultiformButtonBar
+            addProps={{ onClick: () => recItemMultiFormHelper.addItem() }}
+          />
         </GridContainer>
       </Form>
     </Accordion>

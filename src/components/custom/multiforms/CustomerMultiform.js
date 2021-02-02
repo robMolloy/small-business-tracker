@@ -9,14 +9,11 @@ import Form from "../../generic/forms/Form";
 import GridContainer from "../../generic/grids/GridContainer";
 
 import blankItems from "../../../data/blankItems";
-import GridItem from "../../generic/grids/GridItem";
-import ButtonPrimary from "../../generic/buttons/ButtonPrimary";
-import Button from "../../generic/buttons/Button";
 
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
-import FlexBox from "../../generic/flex/FlexBox";
 import CustomerContext from "../../../contexts/custom/single-contexts/CustomerContext";
 import ContactContext from "../../../contexts/custom/single-contexts/ContactContext";
+import MultiformButtonBar from "../../generic/buttons/MultiformButtonBar";
 
 const Customers = (props = {}) => {
   const customerMultiFormControls = {};
@@ -93,17 +90,10 @@ const Customers = (props = {}) => {
               remove: true,
             }}
           />
-          <GridItem xs={12}>
-            <FlexBox justifyContent="space-between">
-              <Button
-                color="secondary"
-                onClick={() => contactMultiFormHelper.addItem()}
-              >
-                +
-              </Button>
-              <ButtonPrimary type="submit">Submit</ButtonPrimary>
-            </FlexBox>
-          </GridItem>
+
+          <MultiformButtonBar
+            addProps={{ onClick: () => contactMultiFormHelper.addItem() }}
+          />
         </GridContainer>
       </Form>
     </Accordion>
