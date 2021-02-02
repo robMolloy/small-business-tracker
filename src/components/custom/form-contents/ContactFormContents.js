@@ -56,6 +56,7 @@ const ContactFormContents = (props = {}) => {
         grid={{ xs: width, sm: width - 6 }}
         label={l_.upperFirst(con_type)}
         name="con_address"
+        {...formHelper.fieldProps("con_address_phone")}
         onChange={(e) => {
           if (con_type === "phone") e.target.value = phone(e.target.value);
 
