@@ -1,4 +1,5 @@
 import populateObject from "../functions/populateObject";
+import isNumber from "../schemas/tests/isNumber";
 
 class multiFormHelper {
   constructor(props = {}) {
@@ -80,6 +81,15 @@ class multiFormHelper {
     });
 
     return allMatches;
+  }
+
+  calculateTotal(key, startingValue = 0) {
+    let sum = Object.values(this.values).reduce((total, values) => {
+      const num = isNumber(values?.[key]) ? values?.[key] : 0;
+      return total + parseFloat(num);
+    }, startingValue);
+
+    return isNumber(sum) ? sum : 0;
   }
 }
 
