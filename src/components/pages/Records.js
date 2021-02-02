@@ -25,24 +25,22 @@ const Records = () => {
       </Section>
 
       <Section>
-        <GridContainer>
-          <ButtonRow
-            array={[
-              <Button
-                color={sort === 0 ? "secondary" : "default"}
-                onClick={() => setSort(0)}
-              >
-                Project
-              </Button>,
-              <Button
-                color={sort === 1 ? "secondary" : "default"}
-                onClick={() => setSort(1)}
-              >
-                Record
-              </Button>,
-            ]}
-          />
-        </GridContainer>
+        <ButtonRow
+          array={[
+            <Button
+              color={sort === 0 ? "secondary" : "default"}
+              onClick={() => setSort(0)}
+            >
+              Project
+            </Button>,
+            <Button
+              color={sort === 1 ? "secondary" : "default"}
+              onClick={() => setSort(1)}
+            >
+              Record
+            </Button>,
+          ]}
+        />
       </Section>
 
       <Section>
