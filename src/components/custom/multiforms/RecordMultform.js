@@ -15,9 +15,8 @@ import GridItem from "../../generic/grids/GridItem";
 
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import getIsoDateString from "../../../functions/getIsoDateString";
-import normalizeCurrency from "../../../functions/normalizeCurrency";
+import currency from "../../../functions/normalizeCurrency";
 import blankItems from "../../../data/blankItems";
-import isNumber from "../../../schemas/tests/isNumber";
 
 import RecordContext from "../../../contexts/custom/single-contexts/RecordContext";
 import RecItemContext from "../../../contexts/custom/single-contexts/RecItemContext";
@@ -28,8 +27,6 @@ const Records = (props = {}) => {
 
   const { add: addRecords } = RecordContext.useContext();
   const { add: addRecItems } = RecItemContext.useContext();
-
-  const [total, setTotal] = React.useState(0);
 
   const initRecord = () =>
     blankItems.record(1, {
@@ -58,13 +55,11 @@ const Records = (props = {}) => {
     newItem: initRecItem,
   });
 
-  const calculateTotal = () => {
-    let sum = Object.values(recItemMultiFormValues).reduce((total, values) => {
-      return total + parseFloat(values.rci_total);
-    }, 0);
+  const [total, setTotal] = React.useState(0);
 
-    return isNumber(sum) ? sum : 0;
-  };
+  const calculateTotal = () =>
+    recItemMultiFormHelper.calculateTotal("rci_total");
+  const refreshTotal = () => setTotal(calculateTotal());
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -78,11 +73,13 @@ const Records = (props = {}) => {
       let recItems = recItemMultiFormHelper.getItems();
 
       let recId = Object.keys(records)[0];
+      Object.values(records)[0].rec_total = calculateTotal();
       Object.values(recItems).forEach((rci) => (rci.rci_rec_id = recId));
 
       addRecords(records);
       addRecItems(recItems);
 
+      setTotal(0);
       recordMultiFormHelper.reset();
       recItemMultiFormHelper.reset();
     }
@@ -102,14 +99,10 @@ const Records = (props = {}) => {
               width: 8,
             }}
           />
-          <GridItem xs={3}>
-            Total: {normalizeCurrency(total, true)}
-            {/* Total: {normalizeCurrency(calculateTotal(), true)} */}
-          </GridItem>
-          <GridItem
-            xs={1}
-            onClick={() => setTotal(normalizeCurrency(calculateTotal(), false))}
-          >
+
+          <GridItem xs={3}>Total: {currency(total, true)}</GridItem>
+
+          <GridItem xs={1} onClick={() => refreshTotal()}>
             <RefreshIcon />
           </GridItem>
 
@@ -120,6 +113,7 @@ const Records = (props = {}) => {
               setMultiFormValues: setRecItemMultiFormValues,
               Component: RecItemFormContents,
               remove: true,
+              onEdit: () => refreshTotal(),
             }}
           />
 
