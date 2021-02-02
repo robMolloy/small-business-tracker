@@ -20,12 +20,18 @@ import RecordContext from "../../../contexts/custom/single-contexts/RecordContex
 import RecItemContext from "../../../contexts/custom/single-contexts/RecItemContext";
 import Accordion from "../../generic/layouts/Accordion";
 
+import RefreshIcon from "../../generic/icons/RefreshIcon";
+import normalizeCurrency from "../../../functions/normalizeCurrency";
+import isNumber from "../../../schemas/tests/isNumber";
+
 const Records = (props = {}) => {
   const recordMultiFormControls = {};
   const recItemMultiFormControls = {};
 
   const { add: addRecords } = RecordContext.useContext();
   const { add: addRecItems } = RecItemContext.useContext();
+
+  const [total, setTotal] = React.useState(0);
 
   const initRecord = () =>
     blankItems.record(1, {
@@ -53,6 +59,14 @@ const Records = (props = {}) => {
     setValues: setRecItemMultiFormValues,
     newItem: initRecItem,
   });
+
+  const calculateTotal = () => {
+    let sum = Object.values(recItemMultiFormValues).reduce((total, values) => {
+      return total + parseFloat(values.rci_total);
+    }, 0);
+
+    return isNumber(sum) ? sum : 0;
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -87,8 +101,19 @@ const Records = (props = {}) => {
               multiFormValues: recordMultiFormValues,
               setMultiFormValues: setRecordMultiFormValues,
               Component: RecordFormContents,
+              width: 8,
             }}
           />
+          <GridItem xs={3}>
+            Total: {normalizeCurrency(total, true)}
+            {/* Total: {normalizeCurrency(calculateTotal(), true)} */}
+          </GridItem>
+          <GridItem
+            xs={1}
+            onClick={() => setTotal(normalizeCurrency(calculateTotal(), false))}
+          >
+            <RefreshIcon />
+          </GridItem>
           <MultiForm
             {...{
               multiFormControls: recItemMultiFormControls,
