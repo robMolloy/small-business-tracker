@@ -20,7 +20,8 @@ const MultiForm = (props = {}) => {
     width,
     remove,
     multiFormControls,
-    overline;
+    overline,
+    onEdit;
 
   ({
     multiFormValues,
@@ -30,6 +31,7 @@ const MultiForm = (props = {}) => {
     width = 12,
     remove = false,
     overline = true,
+    onEdit,
   } = props);
 
   if (remove) width -= 1;
@@ -50,7 +52,7 @@ const MultiForm = (props = {}) => {
         return (
           <React.Fragment key={id}>
             {overline && <GridText underline></GridText>}
-            <Component {...{ values, formControls, width }} />
+            <Component {...{ values, formControls, width, onEdit }} />
             {remove && (
               <GridItem
                 xs={1}
