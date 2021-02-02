@@ -16,7 +16,7 @@ const Records = () => {
   const { items: recordsOnProjects } = useRecordsOnProjectsContext();
   const { items: recItemsOnRecords } = useRecItemsOnRecordsContext();
 
-  const [sort, setSort] = React.useState(0);
+  const [sort, setSort] = React.useState(1);
 
   return (
     <>
