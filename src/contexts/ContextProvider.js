@@ -2,6 +2,7 @@ import React from "react";
 import mightyStorage from "../classes/mightyStorage";
 import config from "../config";
 
+import useAsyncReducer from "./useAsyncReducer";
 import ArrayReducer from "./ArrayReducer";
 import NumberReducer from "./NumberReducer";
 import ObjectReducer from "./ObjectReducer";
@@ -29,9 +30,10 @@ const ContextProvider = (props) => {
   const storageLocation = `${config.project.acronym}_${itemType}`;
 
   const initStorage = () => mightyStorage.getItem(storageLocation, storageType);
-  const [items, dispatch] = React.useReducer(Reducer, initStorage());
+  const [items, dispatch] = useAsyncReducer(Reducer, initStorage(), itemType);
 
   React.useEffect(() => {
+    console.log(123);
     afterSetState(storageLocation, items);
   }, [storageLocation, afterSetState, items]);
 
