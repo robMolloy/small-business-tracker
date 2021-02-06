@@ -17,7 +17,11 @@ const useCustomContext = (props) => {
     dispatch({ type: "ADD", payload });
   };
 
-  return { items, remove, add };
+  const fetchAll = (payload) => {
+    dispatch({ type: "FETCH_ALL", payload });
+  };
+
+  return { items, remove, add, fetchAll };
 };
 
 export default useCustomContext;
