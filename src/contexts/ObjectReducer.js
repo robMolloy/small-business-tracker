@@ -1,11 +1,9 @@
 import db from "../alt-config/firebase";
 
-const Reducer = (state, action = {}, itemType) => {
+const Reducer = async (state, action = {}, itemType) => {
   const { payload, type } = action;
   switch (type) {
     case "ADD":
-      console.log(state, action, itemType);
-
       const batch = db.batch();
       Object.entries(payload).forEach(([id, itm]) => {
         db.collection(`sbt_${itemType}`).doc(id).set(itm);
@@ -20,7 +18,14 @@ const Reducer = (state, action = {}, itemType) => {
       ids.forEach((id) => delete state[id]);
       return { ...state };
 
+    case "FETCH_ALL":
+      const newState = {};
+      const snapshot = await db.collection(`sbt_${itemType}`).get();
+      snapshot.docs.forEach((doc) => (newState[doc.id] = doc.data()));
+      return newState;
+
     default:
+      console.log("default - I thought this was never called ????????????????");
       return { ...state };
   }
 };
