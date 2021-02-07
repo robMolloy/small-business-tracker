@@ -18,7 +18,7 @@ const config = {
   pages: [
     {
       order: "0",
-      path: "home",
+      path: "",
       name: "Home",
       Component: Home,
       Icon: HomeIcon,
