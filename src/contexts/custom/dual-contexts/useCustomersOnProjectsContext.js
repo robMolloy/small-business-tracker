@@ -15,7 +15,7 @@ const useCustomersOnProjectsContext = () => {
     const prjId = pcl.pcl_prj_id;
     const cusId = pcl.pcl_cus_id;
 
-    rtn[prjId][cusId] = customers[cusId];
+    if (rtn.hasOwnProperty(prjId)) rtn[prjId][cusId] = customers[cusId];
   });
 
   return { items: rtn };

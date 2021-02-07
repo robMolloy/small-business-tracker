@@ -21,7 +21,32 @@ const useCustomContext = (props) => {
     dispatch({ type: "FETCH_ALL", payload });
   };
 
-  return { items, remove, add, fetchAll };
+  const addToState = (payload) => {
+    dispatch({ type: "ADD_TO_STATE", payload });
+  };
+
+  const removeFromState = (payload) => {
+    dispatch({ type: "REMOVE_FROM_STATE", payload });
+  };
+
+  const addRemoveState = (payload) => {
+    dispatch({ type: "ADD_REMOVE_STATE", payload });
+  };
+
+  const refresh = (payload) => {
+    dispatch({ type: "REFRESH", payload });
+  };
+
+  return {
+    items,
+    remove,
+    add,
+    fetchAll,
+    addToState,
+    refresh,
+    removeFromState,
+    addRemoveState,
+  };
 };
 
 export default useCustomContext;

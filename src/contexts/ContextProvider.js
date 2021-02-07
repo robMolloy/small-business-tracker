@@ -33,7 +33,6 @@ const ContextProvider = (props) => {
   const [items, dispatch] = useAsyncReducer(Reducer, initStorage(), itemType);
 
   React.useEffect(() => {
-    console.log(123);
     afterSetState(storageLocation, items);
   }, [storageLocation, afterSetState, items]);
 
