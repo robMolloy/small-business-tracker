@@ -10,7 +10,7 @@ const useRecordsOnProjectsContext = () => {
   Object.entries(projects).forEach(([id, prj]) => (rtn[id] = { [id]: prj }));
   Object.entries(records).forEach(([id, rec]) => {
     const prjId = rec.rec_prj_id;
-    rtn[prjId][id] = rec;
+    if (rtn.hasOwnProperty(prjId)) rtn[prjId][id] = rec;
   });
 
   return { items: rtn };

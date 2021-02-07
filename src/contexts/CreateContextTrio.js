@@ -13,7 +13,7 @@ const CreateContextTrio = (props) => {
   );
 
   const useContext = () =>
-    useCustomContext({ Context, beforeAdd, beforeRemove });
+    useCustomContext({ Context, beforeAdd, beforeRemove, itemType });
 
   return { Context, Provider, useContext };
 };

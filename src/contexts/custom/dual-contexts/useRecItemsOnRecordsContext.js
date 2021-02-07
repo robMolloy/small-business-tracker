@@ -10,7 +10,7 @@ const useRecItemsOnRecordsContext = () => {
   Object.entries(records).forEach(([id, rec]) => (rtn[id] = { [id]: rec }));
   Object.entries(recItems).forEach(([id, rci]) => {
     const recId = rci.rci_rec_id;
-    rtn[recId][id] = rci;
+    if (rtn.hasOwnProperty(recId)) rtn[recId][id] = rci;
   });
 
   //

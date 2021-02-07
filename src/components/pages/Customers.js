@@ -1,3 +1,4 @@
+import React from "react";
 import CustomerMultiform from "../custom/multiforms/CustomerMultiform";
 
 import Section from "../generic/sections/Section";
@@ -6,9 +7,10 @@ import ContactsOnCustomersList from "../custom/lists/dual-lists/ContactsOnCustom
 
 import useContactsOnCustomersContext from "../../contexts/custom/dual-contexts/useContactsOnCustomersContext";
 
+//hi
 const Customers = () => {
   const { items } = useContactsOnCustomersContext();
-  //
+
   return (
     <>
       <Section>
