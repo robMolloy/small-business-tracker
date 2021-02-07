@@ -12,14 +12,14 @@ const HomeWelcomeSection = (props = {}) => {
 
   const classes = makeStyles((theme) => ({
     root: {
-      height: "85vh",
       justifyContent: "center",
       alignItems: "center",
       display: "flex",
       padding: "0",
+      color: theme.palette[color].contrastText,
     },
     column: {
-      height: "100%",
+      height: "85vh",
       alignItems: "center",
       display: "flex",
       justifyContent: "space-between",
@@ -27,10 +27,9 @@ const HomeWelcomeSection = (props = {}) => {
     },
     container: {},
     // iconsContainer: { position: "absolute", bottom: 0 },
-    icon: {
+    text: {
       fontSize: "3em",
       cursor: "pointer",
-      color: theme.palette[color].contrastText,
       "&:hover": { fontSize: "3.3em" },
     },
   }))();
@@ -42,10 +41,27 @@ const HomeWelcomeSection = (props = {}) => {
         <span className={classes.container}>
           <Text align="center">Welcome to</Text>
           <Title size={0}>Small Business Tracker</Title>
-          {/* <Text>romolo.co.uk</Text> */}
+          <Text align="center">keeping your business running</Text>
         </span>
         <span></span>
-        <span></span>
+        <span>
+          <Text align="center" fontWeight="bold" gutterBottom={3}>
+            This project is made with React/Javascript and DOES NOT use redux. A
+            similar result is achieved using the vanilla React Hook stack, which
+            results in a less bloated and easier to maintain project.
+          </Text>
+          <Text align="center" fontWeight="bold" gutterBottom={3}>
+            Firestore is used with an original design pattern (without Redux) to
+            give real-time updates. You can view this project on two seperate
+            devices to observe this behaviour.
+          </Text>
+          <Text align="center" fontWeight="bold">
+            The next version will have auth/user accounts, and will be available
+            before the end of February. Whilst there is no auth, please don't
+            save any real information of anyone else's, or any information of
+            yours that you don't want to be public.
+          </Text>
+        </span>
       </span>
     </Section>
   );
