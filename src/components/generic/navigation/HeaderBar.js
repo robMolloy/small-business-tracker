@@ -32,8 +32,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HideOnScroll = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger();
+  const { children, hide } = props;
+
+  const ifHide = useScrollTrigger();
+  const trigger = hide ? ifHide : true;
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -43,13 +45,20 @@ const HideOnScroll = (props) => {
 };
 
 const HeaderBar = (props = {}) => {
-  let children, toggleDrawer, menuButton, color;
-  ({ children, toggleDrawer, menuButton = true, color, ...props } = props);
+  let children, toggleDrawer, menuButton, color, hide;
+  ({
+    children,
+    toggleDrawer,
+    menuButton = true,
+    color,
+    hide = true,
+    ...props
+  } = props);
 
   const classes = useStyles();
 
   return (
-    <HideOnScroll>
+    <HideOnScroll hide={hide}>
       <AppBar className={classes.appbar} {...props}>
         <Section color={color} paddingY={false}>
           <Container className={classes.container}>
