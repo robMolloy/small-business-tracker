@@ -7,12 +7,10 @@ import AllRoutes from "./components/generic/navigation/AllRoutes";
 import theme from "./components/generic/themes/theme";
 
 import HeaderBarContents from "./components/custom/navigation/HeaderBarContents";
+import Background from "./components/generic/layouts/Background";
 
 import { ThemeProvider } from "@material-ui/core/styles";
-import useAllListeners from "./firestore/custom/useAllListeners";
-
-// import requestNotificationPermission from "./components/generic/notifications/requestNotificationPermission";
-// import displayNotification from "./components/generic/notifications/displayNotification";
+import useAllListeners from "./firebase/firestore/custom/useAllListeners";
 
 const App = () => {
   // const Index = Home;
@@ -22,22 +20,18 @@ const App = () => {
   return (
     <Router basename={`${process.env.REACT_APP_PUBLIC_PATH ?? ""}`}>
       <ThemeProvider theme={theme}>
-        <div
-          className="App"
-          style={{
-            backgroundColor: theme.palette.primary.main,
-            minHeight: "100vh",
-          }}
-        >
-          <NavBars
-            menuButton={true}
-            color={headerColor}
-            headerChildren={<HeaderBarContents color={headerColor} />}
-          />
+        <div className="App">
+          <Background>
+            <NavBars
+              menuButton={true}
+              color={headerColor}
+              headerChildren={<HeaderBarContents color={headerColor} />}
+            />
 
-          <main>
-            <AllRoutes />
-          </main>
+            <main>
+              <AllRoutes />
+            </main>
+          </Background>
         </div>
       </ThemeProvider>
     </Router>
