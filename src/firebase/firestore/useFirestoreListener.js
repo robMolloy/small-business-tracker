@@ -1,5 +1,5 @@
 import React from "react";
-import db from "../alt-config/firebase";
+import db from "../../alt-config/firebase";
 
 const useFirebaseListener = (props) => {
   const { useContext, itemType } = props;

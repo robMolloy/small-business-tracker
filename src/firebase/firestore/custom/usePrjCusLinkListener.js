@@ -1,5 +1,5 @@
-import PrjCusLinkContext from "../../contexts/custom/single-contexts/PrjCusLinkContext";
-import useFirebaseListener from "../useFirebaseListener";
+import PrjCusLinkContext from "../../../contexts/custom/single-contexts/PrjCusLinkContext";
+import useFirebaseListener from "../useFirestoreListener";
 
 const usePrjCusLinkListener = () => {
   useFirebaseListener({

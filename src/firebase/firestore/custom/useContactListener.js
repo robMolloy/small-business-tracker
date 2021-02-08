@@ -1,5 +1,5 @@
-import ContactContext from "../../contexts/custom/single-contexts/ContactContext";
-import useFirebaseListener from "../useFirebaseListener";
+import ContactContext from "../../../contexts/custom/single-contexts/ContactContext";
+import useFirebaseListener from "../useFirestoreListener";
 
 const useContactListener = () => {
   useFirebaseListener({

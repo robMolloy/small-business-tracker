@@ -1,5 +1,5 @@
-import ProjectContext from "../../contexts/custom/single-contexts/ProjectContext";
-import useFirebaseListener from "../useFirebaseListener";
+import ProjectContext from "../../../contexts/custom/single-contexts/ProjectContext";
+import useFirebaseListener from "../useFirestoreListener";
 
 const useProjectListener = () => {
   useFirebaseListener({

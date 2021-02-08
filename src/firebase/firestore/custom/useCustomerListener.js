@@ -1,5 +1,5 @@
-import CustomerContext from "../../contexts/custom/single-contexts/CustomerContext";
-import useFirebaseListener from "../useFirebaseListener";
+import CustomerContext from "../../../contexts/custom/single-contexts/CustomerContext";
+import useFirebaseListener from "../useFirestoreListener";
 
 const useCustomerListener = () => {
   useFirebaseListener({

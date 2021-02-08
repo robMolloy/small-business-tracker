@@ -1,5 +1,5 @@
-import RecordContext from "../../contexts/custom/single-contexts/RecordContext";
-import useFirebaseListener from "../useFirebaseListener";
+import RecordContext from "../../../contexts/custom/single-contexts/RecordContext";
+import useFirebaseListener from "../useFirestoreListener";
 
 const useRecordListener = () => {
   useFirebaseListener({
