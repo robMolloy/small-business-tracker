@@ -16,4 +16,5 @@ db.settings({ timestampsInSnapshots: true });
 
 window.db = db;
 
+export { firebase };
 export default db;

@@ -8,7 +8,7 @@ const useFirebaseListener = (props) => {
   const onlyFromCache = React.useRef(true);
 
   React.useEffect(() => {
-    db.collection(`sbt_${itemType}`).onSnapshot((snapshot) => {
+    const listener = db.collection(`sbt_${itemType}`).onSnapshot((snapshot) => {
       const stateChanges = { add: {}, remove: [] };
 
       let changes = snapshot.docChanges();
@@ -30,6 +30,9 @@ const useFirebaseListener = (props) => {
         functions.addRemoveState(stateChanges);
       }
     });
+
+    // unsubscribe to the listener when unmounting
+    return () => listener();
     // eslint-disable-next-line
   }, []);
 };
