@@ -23,8 +23,6 @@ const App = () => {
         <div className="App">
           <Background>
             <NavBars
-              menuButton={true}
-              color={headerColor}
               headerChildren={<HeaderBarContents color={headerColor} />}
             />
 

@@ -4,7 +4,13 @@ import HeaderBar from "../../generic/navigation/HeaderBar";
 
 const NavBars = (props = {}) => {
   let headerChildren, drawerOpen, menuButton, color;
-  ({ headerChildren, drawerOpen = false, menuButton, color, ...props } = props);
+  ({
+    headerChildren,
+    drawerOpen = false,
+    menuButton = true,
+    color = "mono",
+    ...props
+  } = props);
 
   const [drawerState, setDrawerState] = React.useState(drawerOpen);
   const toggleDrawer = () => setDrawerState(!drawerState);
