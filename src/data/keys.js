@@ -7,6 +7,8 @@ const keys = {
   project: Object.keys(blankRows.project),
   recItem: Object.keys(blankRows.recItem),
   record: Object.keys(blankRows.record),
+  signIn: Object.keys(blankRows.signIn),
+  createAccount: Object.keys(blankRows.createAccount),
 };
 
 export default keys;

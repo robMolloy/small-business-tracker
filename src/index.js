@@ -5,14 +5,17 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import AllContextProviders from "./contexts/custom/single-contexts/AllContextProviders";
+import UserContextProvider from "./contexts/custom/auth-contexts/UserContextProvider";
 
 ReactDOM.render(
   <>
     {/* <React.StrictMode> */}
 
-    <AllContextProviders>
-      <App />
-    </AllContextProviders>
+    <UserContextProvider>
+      <AllContextProviders>
+        <App />
+      </AllContextProviders>
+    </UserContextProvider>
 
     {/* </React.StrictMode>, */}
   </>,

@@ -17,6 +17,9 @@ const blankItems = {
   project: (n = 1, values = {}) => getBlankItems(rows.project, n, values),
   recItem: (n = 1, values = {}) => getBlankItems(rows.recItem, n, values),
   record: (n = 1, values = {}) => getBlankItems(rows.record, n, values),
+  signIn: (n = 1, values = {}) => getBlankItems(rows.signIn, n, values),
+  createAccount: (n = 1, values = {}) =>
+    getBlankItems(rows.createAccount, n, values),
 };
 
 export default blankItems;

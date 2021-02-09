@@ -6,14 +6,11 @@ import config from "../../../config";
 const useStyles = makeStyles((theme) => ({ root: {} }));
 
 const Container = (props = {}) => {
-  let children, className, maxWidth;
-  ({
-    children,
-    className = "",
-    maxWidth = config.display.maxWidth,
-    ...props
-  } = props);
+  let children, className, wide, maxWidth;
+  ({ children, className = "", wide = true, ...props } = props);
   const classes = useStyles();
+
+  maxWidth = wide ? config.display.maxWidth : config.display.smallPanelMaxWidth;
 
   return (
     <MUIContainer

@@ -47,6 +47,13 @@ const blankRows = {
     rec_duration_qty: "",
     rec_duration_unit: "",
   },
+  signIn: { id: "", sgn_email: "", sgn_password: "" },
+  createAccount: {
+    id: "",
+    crac_display_name: "",
+    crac_email: "",
+    crac_password: "",
+  },
 };
 
 export default blankRows;

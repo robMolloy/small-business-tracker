@@ -9,12 +9,12 @@ const useUnitsContext = () => {
 
   Object.values(projects).forEach((item) => {
     const value = item.prj_default_unit;
-    if (value !== "") rtn[value] = value;
+    if (!!value) rtn[value] = value;
   });
 
   Object.values(recItems).forEach((item) => {
     const value = item.rci_unit;
-    if (value !== "") rtn[value] = value;
+    if (!!value) rtn[value] = value;
   });
 
   return { items: rtn };

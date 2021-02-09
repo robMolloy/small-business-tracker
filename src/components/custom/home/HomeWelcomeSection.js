@@ -26,7 +26,6 @@ const HomeWelcomeSection = (props = {}) => {
       flexDirection: "column",
     },
     container: {},
-    // iconsContainer: { position: "absolute", bottom: 0 },
     text: {
       fontSize: "3em",
       cursor: "pointer",
@@ -43,21 +42,23 @@ const HomeWelcomeSection = (props = {}) => {
           <Title size={0}>Small Business Tracker</Title>
           <Text align="center">keeping your business running</Text>
         </span>
-        <span></span>
         <span>
           <Text align="center" fontWeight="bold" gutterBottom={3}>
-            This project is made with React/Javascript and DOES NOT use redux. A
-            similar result is achieved using the vanilla React Hook stack, which
-            results in a less bloated and easier to maintain project.
-          </Text>
-          <Text align="center" fontWeight="bold" gutterBottom={3}>
-            Firestore is used with an original design pattern (without Redux) to
-            give real-time updates. You can view this project on two seperate
+            This project has a real-time database which updates your information
+            automatically, You may want to view this project on two seperate
             devices to observe this behaviour.
+          </Text>
+          <Text align="center" fontWeight="bold" gutterBottom={3}></Text>
+          <Text align="center" fontWeight="bold" gutterBottom={3}>
+            This is a React/Javascript project and DOES NOT use redux. Firestore
+            is used with an original design pattern to give real-time updates.
+            This is achieved using the vanilla React Hook stack (Context API,
+            without Redux), which results in a less bloated and easier to
+            maintain project.
           </Text>
           <Text align="center" fontWeight="bold">
             The next version will have auth/user accounts, and will be available
-            before the end of February. Whilst there is no auth, please don't
+            in the next couple of days. Whilst there is no auth, please don't
             save any real information of anyone else's, or any information of
             yours that you don't want to be public.
           </Text>
