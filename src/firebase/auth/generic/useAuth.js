@@ -14,6 +14,7 @@ const useAuth = () => {
   });
 
   const onChange = (user) => {
+    console.warn("auth has changed - thought Id let you know");
     setState({ initializing: false, user, isLoggedIn: !!user });
   };
 

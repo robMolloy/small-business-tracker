@@ -7,6 +7,7 @@ import Projects from "./components/pages/Projects";
 import Records from "./components/pages/Records";
 
 import HomeIcon from "@material-ui/icons/Home";
+import SignOutPage from "./components/pages/SignOutPage";
 
 const config = {
   project: { acronym: "sbt" },
@@ -18,8 +19,9 @@ const config = {
       name: "Home",
       Component: Home,
       Icon: HomeIcon,
-      isSignedIn: true,
-      isSignedOut: true,
+      requireSignIn: true,
+      requireSignOut: true,
+      requireVerifiedSignIn: true,
     },
     {
       order: "1",
@@ -27,8 +29,9 @@ const config = {
       name: "Sign In",
       Component: SignInPage,
       Icon: HomeIcon,
-      isSignedIn: false,
-      isSignedOut: true,
+      requireSignIn: false,
+      requireSignOut: true,
+      requireVerifiedSignIn: true,
     },
     {
       order: "1",
@@ -36,8 +39,19 @@ const config = {
       name: "Create Acccount",
       Component: CreateAccountPage,
       Icon: HomeIcon,
-      isSignedIn: false,
-      isSignedOut: true,
+      requireSignIn: false,
+      requireSignOut: true,
+      requireVerifiedSignIn: true,
+    },
+    {
+      order: "2",
+      path: "sign-out",
+      name: "Sign Out",
+      Component: SignOutPage,
+      Icon: HomeIcon,
+      requireSignIn: true,
+      requireSignOut: false,
+      requireVerifiedSignIn: false,
     },
     {
       order: "1",
@@ -45,8 +59,9 @@ const config = {
       name: "Customers",
       Component: Customers,
       Icon: HomeIcon,
-      isSignedIn: true,
-      isSignedOut: false,
+      requireSignIn: true,
+      requireSignOut: false,
+      requireVerifiedSignIn: true,
     },
     {
       order: "1",
@@ -54,8 +69,9 @@ const config = {
       name: "Projects",
       Component: Projects,
       Icon: HomeIcon,
-      isSignedIn: true,
-      isSignedOut: false,
+      requireSignIn: true,
+      requireSignOut: false,
+      requireVerifiedSignIn: true,
     },
     {
       order: "1",
@@ -63,8 +79,9 @@ const config = {
       name: "Records",
       Component: Records,
       Icon: HomeIcon,
-      isSignedIn: true,
-      isSignedOut: false,
+      requireSignIn: true,
+      requireSignOut: false,
+      requireVerifiedSignIn: true,
     },
   ],
   theme: { spacing: 8 },

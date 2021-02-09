@@ -4,7 +4,6 @@ import getLocaleDateString from "../../../functions/getLocaleDateString";
 const RecordLineDisplayContents = (props) => {
   let values;
   ({ values } = props);
-  console.log(values);
 
   return `${getLocaleDateString(values.rec_timestamp_planned_start)} ${
     values.rec_duration_qty

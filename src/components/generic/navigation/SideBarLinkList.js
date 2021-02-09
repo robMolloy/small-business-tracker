@@ -9,19 +9,25 @@ const SideBarLinkList = (props = {}) => {
   let array;
   ({ array = [], ...props } = props);
 
-  const { isSignedIn } = useSession();
+  const { isSignedIn, isVerifiedSignIn } = useSession();
 
   return (
     <MUIList>
-      {array.map((pageData, j) => {
+      {array.map((pagesData, j) => {
         let usePage = true;
 
-        if (isSignedIn && !pageData.isSignedIn) usePage = false;
-        if (!isSignedIn && !pageData.isSignedOut) usePage = false;
+        if (isSignedIn && !pagesData.requireSignIn) usePage = false;
+        if (!isSignedIn && !pagesData.requireSignOut) usePage = false;
+
+        if (isSignedIn && !isVerifiedSignIn && pagesData.requireVerifiedSignIn)
+          usePage = false;
+
+        // if (isSignedIn && !pageData.requireSignIn) usePage = false;
+        // if (!isSignedIn && !pageData.requireSignOut) usePage = false;
 
         if (!usePage) return "";
 
-        const { Icon, path, name } = pageData;
+        const { Icon, path, name } = pagesData;
 
         return <SideBarLink key={j} {...{ Icon, path, name }} />;
       })}

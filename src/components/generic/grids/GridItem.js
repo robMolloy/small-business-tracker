@@ -11,8 +11,6 @@ const useStyles = makeStyles((theme) => {
 });
 
 const GridItem = (props = {}) => {
-  // console.log(props);
-
   let children, className, xs;
   ({ children, className = "", xs = 12, ...props } = props);
   const classes = useStyles();

@@ -7,10 +7,12 @@ import GridContainer from "../grids/GridContainer";
 import { Grid } from "@material-ui/core";
 
 const MultiformButtonBar = (props) => {
-  let add, addProps, submitProps, submitText, middle, justify;
+  let add, addProps, AddAltComponent, submitProps, submitText, middle, justify;
   ({
     add = true,
     addProps = {},
+
+    AddAltComponent = false,
     submitProps = {},
     submitText = "Submit",
     // middle = <GridItem xs={8}></GridItem>,
@@ -24,10 +26,11 @@ const MultiformButtonBar = (props) => {
         <GridContainer justify={justify}>
           <GridItem xs={2}>
             {add && (
-              <IconButton {...addProps}>
+              <IconButton fullWidth {...addProps}>
                 <AddToListIcon />
               </IconButton>
             )}
+            {!!AddAltComponent && AddAltComponent}
           </GridItem>
           {middle}
           <Grid item>

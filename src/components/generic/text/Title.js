@@ -8,7 +8,7 @@ const Title = (props = {}) => {
   let children, size, underline;
   ({ children, size = 1, underline = false, ...props } = props);
 
-  let Component = ["h1", "h2", "h4"][size];
+  let Component = ["h1", "h2", "h3"][size];
 
   return (
     <Text Component={Component} underline={underline} {...props}>

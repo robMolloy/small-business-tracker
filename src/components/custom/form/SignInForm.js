@@ -1,6 +1,5 @@
 import React from "react";
-import signIn from "../../../firebase/auth/generic/signIn";
-
+import { firebase } from "../../../alt-config/firebase";
 import Paper from "../../generic/layouts/Paper";
 
 import SignInFormContents from "../form-contents/SignInFormContents";
@@ -17,9 +16,12 @@ import Title from "../../generic/text/Title";
 import GridItem from "../../generic/grids/GridItem";
 import { useHistory } from "react-router-dom";
 import useSession from "../../../firebase/auth/generic/useSession";
+import Text from "../../generic/text/Text";
 
 const SignInForm = (props = {}) => {
   const signInFormControls = {};
+
+  const [errorMessage, setErrorMessage] = React.useState("");
   const { isSignedIn } = useSession();
   const history = useHistory();
 
@@ -42,15 +44,13 @@ const SignInForm = (props = {}) => {
 
     if (valid) {
       let formValues = Object.values(signInFormHelper.getItems())[0];
+      let { sgn_email, sgn_password } = formValues;
 
-      let [success, rtn] = await signIn(
-        formValues.sgn_email,
-        formValues.sgn_password
-      );
-
-      console.log(rtn);
-
-      if (success) history.push("/customers");
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(sgn_email, sgn_password)
+        .then((userCredential) => history.push("/customers"))
+        .catch((error) => setErrorMessage(error.message));
     }
   };
 
@@ -74,6 +74,13 @@ const SignInForm = (props = {}) => {
                   Component: SignInFormContents,
                 }}
               />
+              {!!errorMessage && (
+                <GridItem>
+                  <Text align="center" error={true}>
+                    {errorMessage}
+                  </Text>
+                </GridItem>
+              )}
 
               <MultiformButtonBar add={false} />
             </>

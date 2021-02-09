@@ -28,7 +28,6 @@ const Reducer = (state, action = {}, itemType) => {
       ids = Array.isArray(payload) ? remove : [remove];
       ids.forEach((id) => delete state[id]);
 
-      // console.log(state);
       return { ...state, ...add };
 
     default:

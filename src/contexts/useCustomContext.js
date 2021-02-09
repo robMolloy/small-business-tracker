@@ -1,5 +1,6 @@
 import React from "react";
 import db from "../alt-config/firebase";
+import useSession from "../firebase/auth/generic/useSession";
 
 const useCustomContext = (props) => {
   let Context, itemType, beforeAdd, beforeRemove;
@@ -12,6 +13,16 @@ const useCustomContext = (props) => {
 
   const contextReturn = React.useContext(Context);
   const { items, dispatch } = contextReturn;
+
+  const { uid } = useSession();
+
+  const alwaysBeforeAdd = (payload) => {
+    Object.entries(payload).forEach(([id, itm]) => {
+      itm.uid = uid;
+      payload[id] = itm;
+    });
+    return payload;
+  };
 
   const remove = (payload) => {
     payload = beforeRemove(payload);
@@ -28,11 +39,14 @@ const useCustomContext = (props) => {
   };
 
   const add = (payload) => {
+    payload = alwaysBeforeAdd(payload);
+
     const batch = db.batch();
     Object.entries(payload).forEach(([id, itm]) => {
       db.collection(`sbt_${itemType}`).doc(id).set(itm);
     });
     batch.commit();
+
     addToState(payload);
   };
 

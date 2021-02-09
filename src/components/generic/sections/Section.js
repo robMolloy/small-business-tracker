@@ -25,8 +25,6 @@ const Section = (props = {}) => {
     },
   }))();
 
-  // console.log(useTheme());
-
   return (
     <MUIBox className={`${classes.root} ${className}`} {...props}>
       <Component>{children}</Component>

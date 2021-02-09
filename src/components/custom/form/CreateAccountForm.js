@@ -1,5 +1,4 @@
 import React from "react";
-import createAccount from "../../../firebase/auth/generic/createAccount";
 
 import Paper from "../../generic/layouts/Paper";
 
@@ -14,11 +13,17 @@ import blankItems from "../../../data/blankItems";
 import createMultiFormHelper from "../../../classes/createMultiFormHelper";
 import MultiformButtonBar from "../../generic/buttons/MultiformButtonBar";
 import Title from "../../generic/text/Title";
+import Text from "../../generic/text/Text";
 import GridItem from "../../generic/grids/GridItem";
+
+import { firebase } from "../../../alt-config/firebase";
+
 import { useHistory } from "react-router-dom";
 
 const CreateAccountForm = (props = {}) => {
   const createAccountFormControls = {};
+
+  const [errorMessage, setErrorMessage] = React.useState("");
   const history = useHistory();
 
   const initCreateAccount = () => blankItems.createAccount();
@@ -36,23 +41,24 @@ const CreateAccountForm = (props = {}) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(1);
 
     let valid = true;
     if (!(await createAccountFormHelper.isValid())) valid = false;
 
     if (valid) {
       let formValues = Object.values(createAccountFormHelper.getItems())[0];
+      const { crac_email, crac_password } = formValues;
 
-      let [success, rtn] = await createAccount(
-        formValues.crac_email,
-        formValues.crac_password
-      );
-
-      // let message = rtn?.[1]?.message;
-      console.log(JSON.stringify(rtn));
-
-      if (success) history.push("/customers");
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(crac_email, crac_password)
+        .then((userCredential) => {
+          userCredential.user
+            .sendEmailVerification()
+            .then(() => history.push("/customers"))
+            .catch((error) => setErrorMessage(error.message));
+        })
+        .catch((error) => setErrorMessage(error.message));
     }
   };
 
@@ -73,6 +79,13 @@ const CreateAccountForm = (props = {}) => {
               Component: CreateAccountFormContents,
             }}
           />
+          {!!errorMessage && (
+            <GridItem>
+              <Text align="center" error={true}>
+                {errorMessage}
+              </Text>
+            </GridItem>
+          )}
 
           <MultiformButtonBar add={false} />
         </GridContainer>

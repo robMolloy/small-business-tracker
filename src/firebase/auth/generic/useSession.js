@@ -5,7 +5,13 @@ const useSession = () => {
   const contextRtn = React.useContext(UserContext);
   const { user } = contextRtn;
 
-  return { user, isSignedIn: !!user };
+  const isSignedIn = !!user;
+  const uid = user?.uid ?? false;
+  const email = user?.email ?? false;
+  const emailVerified = user?.emailVerified ?? false;
+  const isVerifiedSignIn = isSignedIn && emailVerified;
+
+  return { user, uid, isSignedIn, email, emailVerified, isVerifiedSignIn };
 };
 
 export default useSession;

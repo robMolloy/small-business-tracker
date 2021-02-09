@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 
 import Title from "../../generic/text/Title";
-import Login from "../../pages/Login";
+// import Login from "../../pages/Login";
 
 // const headerHeight
 
@@ -38,9 +38,7 @@ const HeaderBarContents = (props = {}) => {
 
       <div className={classes.spacer}></div>
 
-      <span className={classes.logoSettingsContainer}>
-        <Login />
-      </span>
+      <span className={classes.logoSettingsContainer}>{/* <Login /> */}</span>
     </>
   );
 };
