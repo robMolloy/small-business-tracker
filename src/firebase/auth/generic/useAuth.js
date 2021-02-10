@@ -3,9 +3,6 @@ import { firebase } from "../../../alt-config/firebase";
 
 const useAuth = () => {
   const [state, setState] = React.useState(() => {
-    console.warn(
-      "useAuth called  - Should only be called on first load of app ?????"
-    );
     const user = firebase.auth().currentUser;
     const initializing = !user;
     const isLoggedIn = !!user;
@@ -14,7 +11,6 @@ const useAuth = () => {
   });
 
   const onChange = (user) => {
-    console.warn("auth has changed - thought Id let you know");
     setState({ initializing: false, user, isLoggedIn: !!user });
   };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import db from "../../alt-config/firebase";
 import useSession from "../auth/generic/useSession";
+// import mightyStorage from "../../classes/mightyStorage";
 
 const useFirebaseListener = (props) => {
   const { useContext, itemType } = props;
@@ -10,8 +11,18 @@ const useFirebaseListener = (props) => {
 
   const onlyFromCache = React.useRef(true);
 
+  // React.useEffect(() => {
+  //   console.log("check", uid);
+
+  //   if (!uid) {
+  //     console.log("pass", uid);
+  //     mightyStorage
+  //     window.localStorage.clear();
+  //   }
+  // }, [uid]);
+
   React.useEffect(() => {
-    const listener = db
+    const unsubscribeListener = db
       .collection(`sbt_${itemType}`)
       .where("uid", "==", uid)
       .onSnapshot((snapshot) => {
@@ -30,6 +41,8 @@ const useFirebaseListener = (props) => {
         const online = !snapshot.metadata.fromCache;
         const firstSuccess = onlyFromCache.current && online;
 
+        // if (firstSuccess) console.log("first");
+
         if (firstSuccess) {
           functions.set(stateChanges.add);
           onlyFromCache.current = false;
@@ -38,10 +51,10 @@ const useFirebaseListener = (props) => {
         }
       });
 
-    // unsubscribe to the listener when unmounting
-    return () => listener();
+    return () => unsubscribeListener();
+
     // eslint-disable-next-line
-  }, []);
+  }, [uid]);
 };
 
 export default useFirebaseListener;
