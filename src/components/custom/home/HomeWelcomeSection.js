@@ -42,7 +42,9 @@ const HomeWelcomeSection = (props = {}) => {
         <span className={classes.container}>
           <Text align="center">Welcome to</Text>
           <Title size={0}>Small Business Tracker</Title>
-          <Text align="center">keeping your business running</Text>
+          <Text align="center" gutterBottom={3}>
+            {!isSignedIn && "it takes less than 2 minutes to sign up"}
+          </Text>
         </span>
         {isSignedIn && (
           <>
@@ -57,22 +59,9 @@ const HomeWelcomeSection = (props = {}) => {
         {!isSignedIn && (
           <span>
             <Text align="center" fontWeight="bold" gutterBottom={3}>
-              This project is unfinished. A number of features and finishing
+              This project is in development. A number of features and finishing
               touches, both functional and aesthetic, will be coming very soon.
-              Contact me{" "}
-              <a
-                style={{
-                  borderBottom: "1px solid white",
-                  textDecoration: "none",
-                  color: "#ffffff",
-                }}
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://romolo.co.uk/home/#contactForm"
-              >
-                here
-              </a>{" "}
-              to find out more!
+              Get started using the menu.
             </Text>
             <Text align="center" fontWeight="bold" gutterBottom={3}>
               This project has a real-time database which updates your
@@ -84,7 +73,20 @@ const HomeWelcomeSection = (props = {}) => {
               Firestore is used with an original design pattern to give
               real-time updates. This is achieved using the vanilla React Hook
               stack (Context API, without Redux), which results in a less
-              bloated and easier to maintain project.
+              bloated and easier to maintain project. Contact me at{" "}
+              <a
+                style={{
+                  borderBottom: "1px solid white",
+                  textDecoration: "none",
+                  color: "#ffffff",
+                }}
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://romolo.co.uk/home/#contactForm"
+              >
+                romolo.co.uk
+              </a>{" "}
+              to find out more!
             </Text>
           </span>
         )}

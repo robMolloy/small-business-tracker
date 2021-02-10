@@ -4,15 +4,16 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 
 import Title from "../../generic/text/Title";
-// import Login from "../../pages/Login";
 
-// const headerHeight
+import { Link } from "react-router-dom";
+import useSession from "../../../firebase/auth/generic/useSession";
 
 const HeaderBarContents = (props = {}) => {
   let color;
   ({ color = "mono", ...props } = props);
 
   const history = useHistory();
+  const { isSignedIn } = useSession();
 
   const classes = makeStyles((theme) => ({
     logoContainer: {
@@ -27,6 +28,14 @@ const HeaderBarContents = (props = {}) => {
       flexDirection: "column",
       padding: `${theme.spacing(1)}px 0`,
     },
+    spacer: { flexGrow: 1 },
+    links: { display: "flex" },
+    link: {
+      marginRight: theme.spacing(3),
+      textDecoration: "none",
+      color: "black",
+      "&:hover": { borderBottom: "1px solid black" },
+    },
   }))();
   return (
     <>
@@ -38,7 +47,21 @@ const HeaderBarContents = (props = {}) => {
 
       <div className={classes.spacer}></div>
 
-      <span className={classes.logoSettingsContainer}>{/* <Login /> */}</span>
+      <span className={classes.logoSettingsContainer}>
+        {!isSignedIn && (
+          <div className={classes.links}>
+            <Link className={classes.link} to="/">
+              Home
+            </Link>
+            <Link className={classes.link} to="/sign-in">
+              Sign In
+            </Link>
+            <Link className={classes.link} to="/create-account">
+              Create Account
+            </Link>
+          </div>
+        )}
+      </span>
     </>
   );
 };
