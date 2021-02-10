@@ -22,36 +22,43 @@ const useFirebaseListener = (props) => {
   // }, [uid]);
 
   React.useEffect(() => {
-    const unsubscribeListener = db
-      .collection(`sbt_${itemType}`)
-      .where("uid", "==", uid)
-      .onSnapshot((snapshot) => {
-        const stateChanges = { add: {}, remove: [] };
+    if (uid) {
+      const unsubscribeListener = db
+        .collection(`sbt_${itemType}`)
+        .where("uid", "==", uid)
+        .onSnapshot((snapshot) => {
+          const stateChanges = { add: {}, remove: [] };
 
-        let changes = snapshot.docChanges();
-        changes.forEach((change) => {
-          const { doc } = change;
+          let changes = snapshot.docChanges();
+          changes.forEach((change) => {
+            const { doc } = change;
 
-          if (change.type === "modified") stateChanges.add[doc.id] = doc.data();
-          else if (change.type === "added")
-            stateChanges.add[doc.id] = doc.data();
-          else if (change.type === "removed") stateChanges.remove.push(doc.id);
+            if (change.type === "modified")
+              stateChanges.add[doc.id] = doc.data();
+            else if (change.type === "added")
+              stateChanges.add[doc.id] = doc.data();
+            else if (change.type === "removed")
+              stateChanges.remove.push(doc.id);
+          });
+
+          const online = !snapshot.metadata.fromCache;
+          const firstSuccess = onlyFromCache.current && online;
+
+          // if (firstSuccess) console.log("first");
+
+          if (firstSuccess) {
+            functions.set(stateChanges.add);
+            onlyFromCache.current = false;
+          } else {
+            functions.addRemoveState(stateChanges);
+          }
         });
 
-        const online = !snapshot.metadata.fromCache;
-        const firstSuccess = onlyFromCache.current && online;
-
-        // if (firstSuccess) console.log("first");
-
-        if (firstSuccess) {
-          functions.set(stateChanges.add);
-          onlyFromCache.current = false;
-        } else {
-          functions.addRemoveState(stateChanges);
-        }
-      });
-
-    return () => unsubscribeListener();
+      return () => {
+        unsubscribeListener();
+        functions.set({});
+      };
+    }
 
     // eslint-disable-next-line
   }, [uid]);
