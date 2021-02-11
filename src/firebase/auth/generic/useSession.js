@@ -10,8 +10,17 @@ const useSession = () => {
   const email = user?.email ?? false;
   const emailVerified = user?.emailVerified ?? false;
   const isVerifiedSignIn = isSignedIn && emailVerified;
+  const isUnverifiedSignIn = isSignedIn && !emailVerified;
 
-  return { user, uid, isSignedIn, email, emailVerified, isVerifiedSignIn };
+  return {
+    user,
+    uid,
+    isSignedIn,
+    email,
+    emailVerified,
+    isVerifiedSignIn,
+    isUnverifiedSignIn,
+  };
 };
 
 export default useSession;

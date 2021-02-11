@@ -44,16 +44,6 @@ const config = {
       requireVerifiedSignIn: true,
     },
     {
-      order: "2",
-      path: "sign-out",
-      name: "Sign Out",
-      Component: SignOutPage,
-      Icon: HomeIcon,
-      requireSignIn: true,
-      requireSignOut: false,
-      requireVerifiedSignIn: false,
-    },
-    {
       order: "1",
       path: "customers",
       name: "Customers",
@@ -83,8 +73,29 @@ const config = {
       requireSignOut: false,
       requireVerifiedSignIn: true,
     },
+    {
+      order: "2",
+      path: "sign-out",
+      name: "Sign Out",
+      Component: SignOutPage,
+      Icon: HomeIcon,
+      requireSignIn: true,
+      requireSignOut: false,
+      requireVerifiedSignIn: false,
+    },
   ],
-  theme: { spacing: 8 },
+  theme: {
+    spacing: 8,
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 959,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+  },
   palettes: [
     {
       primary: "#004267",

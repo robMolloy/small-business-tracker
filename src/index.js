@@ -6,6 +6,8 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import AllContextProviders from "./contexts/custom/single-contexts/AllContextProviders";
 import UserContextProvider from "./contexts/custom/auth-contexts/UserContextProvider";
+import theme from "./components/generic/themes/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 ReactDOM.render(
   <>
@@ -13,7 +15,9 @@ ReactDOM.render(
 
     <UserContextProvider>
       <AllContextProviders>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </AllContextProviders>
     </UserContextProvider>
 

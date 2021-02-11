@@ -10,6 +10,8 @@ import Container from "../../generic/containers/Container";
 import Section from "../../generic/sections/Section";
 import Slide from "@material-ui/core/Slide";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import HeaderBarLinkList from "./HeaderBarLinkList";
+import { Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -64,17 +66,22 @@ const HeaderBar = (props = {}) => {
           <Container className={classes.container}>
             {children}
 
-            <div></div>
+            <Hidden smDown>
+              <HeaderBarLinkList />
+            </Hidden>
+
             {menuButton && (
-              <IconButton
-                onClick={toggleDrawer}
-                className={classes.menuButton}
-                aria-label="menu"
-                color="primary"
-                variant="outlined"
-              >
-                <MenuIcon />
-              </IconButton>
+              <Hidden mdUp>
+                <IconButton
+                  onClick={toggleDrawer}
+                  className={classes.menuButton}
+                  aria-label="menu"
+                  color="primary"
+                  variant="outlined"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
             )}
           </Container>
         </Section>

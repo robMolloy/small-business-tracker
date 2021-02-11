@@ -6,6 +6,7 @@ import Text from "../../generic/text/Text";
 
 import makeStyles from "@material-ui/styles/makeStyles";
 import useSession from "../../../firebase/auth/generic/useSession";
+import HomeAboutTheProduct from "./HomeAboutTheProduct";
 
 const HomeWelcomeSection = (props = {}) => {
   let color;
@@ -14,20 +15,18 @@ const HomeWelcomeSection = (props = {}) => {
 
   const classes = makeStyles((theme) => ({
     root: {
-      justifyContent: "center",
-      alignItems: "center",
       display: "flex",
-      padding: "0",
+      justifyContent: "center",
       color: theme.palette[color].contrastText,
     },
     column: {
-      height: "85vh",
-      alignItems: "center",
+      minHeight: "85vh",
       display: "flex",
-      justifyContent: "space-between",
       flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-between",
     },
-    container: {},
+    innerContainer: { margin: "0 24px" },
     text: {
       fontSize: "3em",
       cursor: "pointer",
@@ -36,12 +35,14 @@ const HomeWelcomeSection = (props = {}) => {
   }))();
 
   return (
-    <Section className={classes.root} color={color}>
+    <Section className={classes.root}>
       <span className={classes.column}>
         <span></span>
-        <span className={classes.container}>
+        <span>
           <Text align="center">Welcome to</Text>
-          <Title size={0}>Small Business Tracker</Title>
+          <Title align="center" size={0} gutterBottom={1}>
+            Small Business Tracker
+          </Title>
           <Text align="center" gutterBottom={3}>
             {!isSignedIn && "it takes less than 2 minutes to sign up"}
           </Text>
@@ -58,36 +59,7 @@ const HomeWelcomeSection = (props = {}) => {
         )}
         {!isSignedIn && (
           <span>
-            <Text align="center" fontWeight="bold" gutterBottom={3}>
-              This project is in development. A number of features and finishing
-              touches, both functional and aesthetic, will be coming very soon.
-              Get started using the menu.
-            </Text>
-            <Text align="center" fontWeight="bold" gutterBottom={3}>
-              This project has a real-time database which updates your
-              information automatically, You may want to view this project on
-              two seperate devices to observe this behaviour.
-            </Text>
-            <Text align="center" fontWeight="bold">
-              This is a React/Javascript project and DOES NOT use redux.
-              Firestore is used with an original design pattern to give
-              real-time updates. This is achieved using the vanilla React Hook
-              stack (Context API, without Redux), which results in a less
-              bloated and easier to maintain project. Contact me at{" "}
-              <a
-                style={{
-                  borderBottom: "1px solid white",
-                  textDecoration: "none",
-                  color: "#ffffff",
-                }}
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://romolo.co.uk/home/#contactForm"
-              >
-                romolo.co.uk
-              </a>{" "}
-              to find out more!
-            </Text>
+            <HomeAboutTheProduct />
           </span>
         )}
       </span>

@@ -5,15 +5,11 @@ import { makeStyles } from "@material-ui/styles";
 
 import Title from "../../generic/text/Title";
 
-import { Link } from "react-router-dom";
-import useSession from "../../../firebase/auth/generic/useSession";
-
 const HeaderBarContents = (props = {}) => {
   let color;
   ({ color = "mono", ...props } = props);
 
   const history = useHistory();
-  const { isSignedIn } = useSession();
 
   const classes = makeStyles((theme) => ({
     logoContainer: {
@@ -47,21 +43,7 @@ const HeaderBarContents = (props = {}) => {
 
       <div className={classes.spacer}></div>
 
-      <span className={classes.logoSettingsContainer}>
-        {!isSignedIn && (
-          <div className={classes.links}>
-            <Link className={classes.link} to="/">
-              Home
-            </Link>
-            <Link className={classes.link} to="/sign-in">
-              Sign In
-            </Link>
-            <Link className={classes.link} to="/create-account">
-              Create Account
-            </Link>
-          </div>
-        )}
-      </span>
+      <span className={classes.logoSettingsContainer}></span>
     </>
   );
 };

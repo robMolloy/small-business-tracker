@@ -13,7 +13,10 @@ const Text = (props = {}) => {
     underline,
     error,
     lineHeight,
-    fontWeight;
+    fontWeight,
+    indentLeft,
+    indentRight,
+    before;
 
   ({
     children,
@@ -26,6 +29,9 @@ const Text = (props = {}) => {
     error = false,
     lineHeight = 4,
     fontWeight = "normal",
+    indentLeft = 0,
+    indentRight = 0,
+    before = "",
     ...props
   } = props);
 
@@ -36,6 +42,8 @@ const Text = (props = {}) => {
       borderBottom: underline ? `1px solid ${theme.palette.grey.main}` : "none",
       margin: 0,
       marginBottom: theme.spacing(gutterBottom),
+      marginLeft: `${theme.spacing(indentLeft)}px`,
+      marginRight: `${theme.spacing(indentRight)}px`,
       lineHeight: `${theme.spacing(lineHeight)}px`,
     },
     error: { color: theme.palette.error.main },
@@ -52,6 +60,7 @@ const Text = (props = {}) => {
 
   return (
     <Component className={newClasses} {...props}>
+      {before}
       {children}
     </Component>
   );

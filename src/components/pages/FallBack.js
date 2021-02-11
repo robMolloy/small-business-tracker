@@ -13,9 +13,9 @@ import sendEmailVerificationLink from "../../firebase/auth/generic/sendEmailVeri
 
 const Redirect = ({ location = "/" }) => {
   const history = useHistory();
-  const { user, isSignedIn, isVerifiedSignIn } = useSession();
+  const { user, isSignedIn, isVerifiedSignIn,isUnverifiedSignIn } = useSession();
 
-  const unVerifiedSignIn = isSignedIn && !isVerifiedSignIn;
+  // const unVerifiedSignIn = isSignedIn && !isVerifiedSignIn;
 
   const onResend = () => {
     sendEmailVerificationLink(user);
@@ -30,14 +30,14 @@ const Redirect = ({ location = "/" }) => {
               <Title align="center">
                 {!isSignedIn && "You are not signed in"}
                 {isVerifiedSignIn && "You are signed in"}
-                {unVerifiedSignIn && "You need to verify your email address"}
+                {isUnVerifiedSignIn && "You need to verify your email address"}
               </Title>
             </GridItem>
             <GridItem>
               <Text align="center">
                 {isVerifiedSignIn || !isSignedIn
                   ? "Go home or navigate using the menu."
-                  : "Please check your junk email, and click below to to resend the email verification link. Once verified you will need to refresh the page."}
+                  : "Please check your junk email, and click below to resend the email verification link. Once verified you will need to refresh the page."}
               </Text>
             </GridItem>
             <GridItem>

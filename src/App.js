@@ -4,34 +4,39 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import NavBars from "./components/generic/navigation/NavBars";
 import AllRoutes from "./components/generic/navigation/AllRoutes";
-import theme from "./components/generic/themes/theme";
 
 import HeaderBarContents from "./components/custom/navigation/HeaderBarContents";
-import Background from "./components/generic/layouts/Background";
 
-import { ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import useAllListeners from "./firebase/firestore/custom/useAllListeners";
+
+const useStyles = makeStyles((theme) => ({
+  app: {
+    backgroundColor: theme.palette.primary.main,
+    height: "100vh",
+  },
+  main: {
+    // backgroundColor: theme.palette.primary.main,
+    // height: "100%",
+  },
+}));
 
 const App = () => {
   // const Index = Home;
   const headerColor = "mono";
   useAllListeners();
 
+  const classes = useStyles();
+
   return (
     <Router basename={`${process.env.REACT_APP_PUBLIC_PATH ?? ""}`}>
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          <Background>
-            <NavBars
-              headerChildren={<HeaderBarContents color={headerColor} />}
-            />
+      <div className={`App ${classes.app}`}>
+        <NavBars headerChildren={<HeaderBarContents color={headerColor} />} />
 
-            <main>
-              <AllRoutes />
-            </main>
-          </Background>
-        </div>
-      </ThemeProvider>
+        <main className={classes.main}>
+          <AllRoutes />
+        </main>
+      </div>
     </Router>
   );
 };
